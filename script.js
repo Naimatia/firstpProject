@@ -479,12 +479,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+/*********************************    Tache 1 *********************************************/
 document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButton");
-  const previewContainerWrapper = document.getElementById(
-    "previewContainerWrapper"
-  );
-
+  const previewContainerWrapper = document.getElementById("previewContainerWrapper");
+  const modal = document.getElementById("modal1");
+  const nextModal = document.querySelector("#modal7"); 
   function validateFile(file, callback) {
     const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
     if (!allowedTypes.includes(file.type)) {
@@ -523,7 +524,6 @@ document.addEventListener("DOMContentLoaded", () => {
     inputElement.addEventListener("change", (event) => {
       const files = Array.from(event.target.files);
 
-      // Check if more than 5 images are being uploaded
       if (previewContainerWrapper.children.length + files.length > 6) {
         alert("You can only upload a maximum of 5 images.");
         inputElement.value = "";
@@ -535,7 +535,6 @@ document.addEventListener("DOMContentLoaded", () => {
           if (isValid) {
             const reader = new FileReader();
             reader.onload = (e) => {
-              // Create new preview container for the new image
               const newPreviewContainer = document.createElement("div");
               newPreviewContainer.classList.add("previewContainer");
               newPreviewContainer.style =
@@ -543,35 +542,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.target.result +
                 ") no-repeat center center; background-size: contain; cursor: pointer; border-radius: 10px;";
 
-              // Create file input inside the new preview container
               const input = document.createElement("input");
               input.type = "file";
               input.classList.add("fileInput");
               input.style =
-                "opacity: 0; width: 100%; height: 20px; cursor: pointer; ;";
+                "opacity: 0; width: 100%; height: 20px; cursor: pointer;";
 
-              // Append input to the new preview container
               newPreviewContainer.appendChild(input);
-
-              // Append the new preview container to the wrapper
               previewContainerWrapper.appendChild(newPreviewContainer);
 
-              // Apply the handler for new file inputs
               handleFileInput(input);
 
-              // Check if 5 images are uploaded and hide addImageButton
               if (previewContainerWrapper.children.length >= 5) {
                 addImageButton.style.display = "none";
               }
             };
             reader.readAsDataURL(file);
+
+            // Automatically transition to the next screen
+            setTimeout(() => {
+              // Hide the current modal
+              if (modal) {
+                const modalInstance = bootstrap.Modal.getInstance(modal);
+                modalInstance.hide();
+              }
+
+              // Show the next modal
+              if (nextModal) {
+                const nextModalInstance = new bootstrap.Modal(nextModal);
+                nextModalInstance.show();
+              }
+            }, 500); // Delay for user feedback
           } else {
             inputElement.value = "";
           }
         });
       });
 
-      // Toggle the visibility of addImageButton based on the number of images in previewContainerWrapper
       if (previewContainerWrapper.children.length === 0) {
         addImageButton.style.display = "block";
       } else {
@@ -580,12 +587,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Apply to all preview containers
   const fileInputs = document.querySelectorAll(".fileInput");
   fileInputs.forEach((input) => {
     handleFileInput(input);
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButtonModel2");
