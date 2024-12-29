@@ -518,22 +518,37 @@ document.addEventListener("DOMContentLoaded", () => {
       return callback(false, null);
     }
 
-    const img = new Image();
     const reader = new FileReader();
 
     reader.onload = (e) => {
-      if (file.type.startsWith("image")) {
-        img.onload = () => {
-          if (img.width <= 350 && img.height <= 812) {
-            callback(true, e.target.result);
-          } else {
-            callback(false, null);
-          }
-        };
-        img.src = e.target.result;
-      } else {
-        callback(true, e.target.result);
-      }
+      const img = new Image();
+      img.onload = () => {
+        // Resize the image if it exceeds the maximum dimensions
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          
+          // Calculate the new dimensions while preserving the aspect ratio
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+          
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          // Draw the resized image onto the canvas
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+          // Get the resized image as a data URL
+          const resizedDataUrl = canvas.toDataURL(file.type);
+
+          callback(true, resizedDataUrl); // Pass the resized image to the callback
+        } else {
+          callback(true, e.target.result); // No resizing needed
+        }
+      };
+
+      img.src = e.target.result;
     };
 
     reader.onerror = () => {
@@ -546,7 +561,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Handle file input
   function handleFileInput(inputElement) {
     inputElement.addEventListener("change", async (event) => {
-      // Function to remove a thumbnail and update the count
       const files = event.target.files;
       const currentThumbnails = thumbnailContainer.querySelectorAll("img");
       if (currentThumbnails.length + files.length > MAX_IMAGES) {
@@ -605,7 +619,6 @@ document.addEventListener("DOMContentLoaded", () => {
     imageCounter.textContent = count;
   }
 
-
   // Delete the main image
   deleteButton.addEventListener("click", () => {
     const currentThumbnails = Array.from(thumbnailContainer.querySelectorAll("img"));
@@ -643,26 +656,6 @@ document.addEventListener("DOMContentLoaded", () => {
     handleFileInput(fileInput);
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
