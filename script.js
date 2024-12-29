@@ -484,13 +484,17 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButton");
   const previewContainerWrapper = document.getElementById("previewContainerWrapper");
-  const modal = document.getElementById("modal1");
-  const nextModal = document.querySelector("#modal7"); 
+  const modal1 = document.getElementById("modal1");
+  const modal7 = document.getElementById("modal7");
+  const mainImage = document.getElementById("mainImage");
+  const thumbnailContainer = document.getElementById("thumbnailContainer"); // Le conteneur pour les miniatures
+
+  const MAX_IMAGES = 5; // Maximum number of images allowed
+
   function validateFile(file, callback) {
     const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
     if (!allowedTypes.includes(file.type)) {
-      alert("Only MP4, JPG, or PNG files are allowed.");
-      return callback(false);
+      return callback(false, null);
     }
 
     const img = new Image();
@@ -500,98 +504,81 @@ document.addEventListener("DOMContentLoaded", () => {
       if (file.type.startsWith("image")) {
         img.onload = () => {
           if (img.width <= 350 && img.height <= 812) {
-            callback(true);
+            callback(true, e.target.result);
           } else {
-            alert("Image dimensions must be 350x812 pixels or smaller.");
-            callback(false);
+            callback(false, null);
           }
         };
         img.src = e.target.result;
       } else {
-        callback(true);
+        callback(true, e.target.result);
       }
     };
 
     reader.onerror = () => {
-      alert("Error loading the file.");
-      callback(false);
+      callback(false, null);
     };
 
     reader.readAsDataURL(file);
   }
 
   function handleFileInput(inputElement) {
-    inputElement.addEventListener("change", (event) => {
-      const files = Array.from(event.target.files);
+    inputElement.addEventListener("change", async (event) => {
+      const file = event.target.files[0];
+      const currentThumbnails = thumbnailContainer.querySelectorAll("img");
 
-      if (previewContainerWrapper.children.length + files.length > 6) {
-        alert("You can only upload a maximum of 5 images.");
-        inputElement.value = "";
-        return;
+      // Vérifier si le nombre de vignettes dépasse déjà la limite
+      if (currentThumbnails.length >= MAX_IMAGES) {
+        return; // Ne pas ajouter d'image si la limite est atteinte
       }
 
-      files.forEach((file) => {
-        validateFile(file, (isValid) => {
+      if (file) {
+        validateFile(file, (isValid, fileSrc) => {
           if (isValid) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              const newPreviewContainer = document.createElement("div");
-              newPreviewContainer.classList.add("previewContainer");
-              newPreviewContainer.style =
-                "height: 100px; width: 80px; display: flex; justify-content: center; align-items: center; background: url(" +
-                e.target.result +
-                ") no-repeat center center; background-size: contain; cursor: pointer; border-radius: 10px;";
 
-              const input = document.createElement("input");
-              input.type = "file";
-              input.classList.add("fileInput");
-              input.style =
-                "opacity: 0; width: 100%; height: 20px; cursor: pointer;";
+            // Set the main image for modal7 and open the next modal
+            mainImage.src = fileSrc;
 
-              newPreviewContainer.appendChild(input);
-              previewContainerWrapper.appendChild(newPreviewContainer);
+            // Create a thumbnail dynamically and append it to the thumbnail container
+            const thumbnail = document.createElement("img");
+            thumbnail.src = fileSrc;
+            thumbnail.classList.add("img-thumbnail");
+            thumbnail.style.width = "45px";
+            thumbnail.style.height = "45px";
+            thumbnail.style.cursor = "pointer";
+            thumbnail.style.objectFit = "cover";
+            thumbnail.style.padding = "0";
+            thumbnail.alt = `Thumbnail ${currentThumbnails.length + 1}`;
+            thumbnail.addEventListener("click", () => changeMainImage(fileSrc));
 
-              handleFileInput(input);
+            // Add the thumbnail to the container
+            thumbnailContainer.appendChild(thumbnail);
 
-              if (previewContainerWrapper.children.length >= 5) {
-                addImageButton.style.display = "none";
-              }
-            };
-            reader.readAsDataURL(file);
+            // Hide modal1 and show modal7
+            const modal1Instance = bootstrap.Modal.getInstance(modal1);
+            modal1Instance.hide();
 
-            // Automatically transition to the next screen
-            setTimeout(() => {
-              // Hide the current modal
-              if (modal) {
-                const modalInstance = bootstrap.Modal.getInstance(modal);
-                modalInstance.hide();
-              }
-
-              // Show the next modal
-              if (nextModal) {
-                const nextModalInstance = new bootstrap.Modal(nextModal);
-                nextModalInstance.show();
-              }
-            }, 500); // Delay for user feedback
-          } else {
-            inputElement.value = "";
+            const modal7Instance = new bootstrap.Modal(modal7);
+            modal7Instance.show();
           }
         });
-      });
-
-      if (previewContainerWrapper.children.length === 0) {
-        addImageButton.style.display = "block";
-      } else {
-        addImageButton.style.display = "none";
       }
     });
   }
 
+  function changeMainImage(src) {
+    mainImage.src = src;
+  }
+
+  // Attach file input handler
   const fileInputs = document.querySelectorAll(".fileInput");
-  fileInputs.forEach((input) => {
-    handleFileInput(input);
-  });
+  fileInputs.forEach((fileInput) => handleFileInput(fileInput));
 });
+
+
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
