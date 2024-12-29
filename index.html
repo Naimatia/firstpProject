@@ -118,7 +118,10 @@
                 <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
                   data-bs-dismiss="modal" style="height: 96px; width: 69%" id="addImageButton" />
 
-                <input type="file" class="fileInput" style="
+                <input type="file" class="fileInput" 
+                      multiple 
+                      accept="image/*"
+                      style="
                       opacity: 0;
                       width: 100%;
                       height: 100%;
@@ -277,7 +280,7 @@ class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
                 <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
                   data-bs-dismiss="modal" style="height: 250px; width: 100%" id="addImageButtonModel2" />
 
-                <input type="file" class="fileInput" style="
+                <input type="file" class="fileInputModel2" style="
                       opacity: 0;
                       width: 100%;
                       height: 100%;
@@ -508,7 +511,7 @@ class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
                   <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
                     data-bs-dismiss="modal" style="height: 180px; width: 100%" id="addImageButtonModel3" />
 
-                  <input type="file" class="fileInput" style="
+                  <input type="file" class="fileInput3" style="
                         opacity: 0;
                         width: 100%;
                         height: 100%;
@@ -1160,18 +1163,30 @@ class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
               height: 812px;
               gap: 0px;
               opacity: 0px;
+              
             ">
         <div style="
-              position: absolute;
-              top: 0;
-              right: 5px;
-              width: 80px;
-              height: 80px;
-              border-radius: 5px;
-              z-index: 1000;
+        position: absolute; 
+        top: 11px; 
+        right: 5px; 
+        width: 80px; 
+        height: 40px; 
+        border-radius: 5px; 
+        z-index: 1000; display: flex; 
+        align-items: center;
+        background: #1c274c62;
             ">
-          <img src="assets/second-svg-dialog/Group%201000008474.svg" style="width: 100%; height: 100%" />
+
+            
+          <!-- Image -->
+          <img src="assets/second-svg-dialog/Vector.png" style="width: 30px; height: 30px; margin: 5px; border-radius: 5px; object-fit: cover; color:#FFFFFF;" />
+          <!-- Number on the right -->
+          <div id="imageCounter" style=" font-size: 30px; font-weight: bold; color: white; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center;">
+            0 <!-- Replace with dynamic number if needed -->
+          </div>
+          
         </div>
+        
 
         <div style="
         width: 50px;
@@ -1187,18 +1202,18 @@ class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
               justify-content: center;
               gap: 5px;
             ">
-            
-          <img src="assets/second-svg-dialog/Group%201000008246.svg" style="width: 100%; height: 100%" />
+
+          <img id="deleteButton" src="assets/second-svg-dialog/Group%201000008246.svg" style="width: 100%; height: 100%; cursor: pointer;" />
 
 
           <img id="shareButton" data-target="#modal8" src="assets/second-svg-dialog/Group%201000008244.svg"
-            style="width: 100%; height: 100%" />
+            style="width: 100%; height: 100%; cursor: pointer;" />
 
           <img id="backButtonToModal1" data-target="#modal1" src="assets/second-svg-dialog/Group%201000008247.svg"
-            style="width: 100%; height: 100%" />
+            style="width: 100%; height: 100%; cursor: pointer;" />
 
           <img id="shareButton" data-target="#modal8" src="assets/second-svg-dialog/Group%201000008249.svg"
-            style="width: 100%; height: 100%" />
+            style="width: 100%; height: 100%; cursor: pointer;" />
         </div>
 
         <div class="modal-body">
@@ -1226,9 +1241,9 @@ class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
               padding: 5px;
             ">
           <img id="shareButton" data-target="#modal8" src="assets/second-svg-dialog/Group%201000008244.svg"
-            alt="image" style="width: 42.86px; height: 42.86px; margin-bottom: 5px;"/>
+            alt="image" style="width: 42.86px; height: 42.86px; margin-bottom: 5px; cursor: pointer;"/>
           <img id="backButtonToModal1" data-target="#modal1" src="assets/second-svg-dialog/Group%201000008247.svg"
-            alt="image" style="width: 42.86px; height: 42.86px; margin-bottom: 5px;"/>
+            alt="image" style="width: 42.86px; height: 42.86px; margin-bottom: 5px; cursor: pointer;"/>
         </div>
       
         <div style="
@@ -1701,7 +1716,7 @@ class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
                 <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
                   data-bs-dismiss="modal" style="height: 250px; width: 100%" id="addImageButtonModel10" />
 
-                <input type="file" class="fileInput" style="
+                <input type="file" class="fileInput2" style="
                       opacity: 0;
                       width: 100%;
                       height: 100%;

@@ -445,13 +445,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll("#backButtonToModal1");
+  const thumbnailContainer = document.getElementById("thumbnailContainer");
+  const imageCounter = document.getElementById("imageCounter");
+
+  // Function to update the image count
+  function updateImageCount(count) {
+    imageCounter.textContent = count;
+  }
 
   buttons.forEach((createButton) => {
     createButton.addEventListener("click", () => {
+      // Before navigating to another modal, update the image count
+      const currentThumbnails = thumbnailContainer.querySelectorAll("img");
+      updateImageCount(currentThumbnails.length);
+
+      // Hide the current modal (modal7)
       const currentModal = bootstrap.Modal.getInstance(
         document.getElementById("modal7")
       );
       currentModal.hide();
+
+      // Show the target modal
       const targetModalId = createButton.getAttribute("data-target");
       const targetModal = new bootstrap.Modal(
         document.querySelector(targetModalId)
@@ -460,6 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll("#createSurveyInfo");
@@ -487,10 +502,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal1 = document.getElementById("modal1");
   const modal7 = document.getElementById("modal7");
   const mainImage = document.getElementById("mainImage");
-  const thumbnailContainer = document.getElementById("thumbnailContainer"); // Le conteneur pour les miniatures
+  const thumbnailContainer = document.getElementById("thumbnailContainer");
+  const imageCounter = document.getElementById("imageCounter");
+  const deleteButton = document.getElementById("deleteButton");
 
-  const MAX_IMAGES = 5; // Maximum number of images allowed
+  const MAX_IMAGES = 5;
+  const DEFAULT_IMAGE = "assets/second-svg-dialog/image%201425.svg"; // Default image when no images are available
 
+  let thumbnails = []; // Array to store the image sources
+
+  // Validate the file
   function validateFile(file, callback) {
     const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
     if (!allowedTypes.includes(file.type)) {
@@ -522,58 +543,122 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   }
 
+  // Handle file input
   function handleFileInput(inputElement) {
     inputElement.addEventListener("change", async (event) => {
-      const file = event.target.files[0];
+      // Function to remove a thumbnail and update the count
+      const files = event.target.files;
       const currentThumbnails = thumbnailContainer.querySelectorAll("img");
-
-      // Vérifier si le nombre de vignettes dépasse déjà la limite
-      if (currentThumbnails.length >= MAX_IMAGES) {
-        return; // Ne pas ajouter d'image si la limite est atteinte
+      if (currentThumbnails.length + files.length > MAX_IMAGES) {
+        alert(`You can only upload a maximum of ${MAX_IMAGES} images.`);
+        event.preventDefault(); // Prevent the file input action from proceeding
+        return; // Exit the function if the limit is exceeded
       }
 
-      if (file) {
-        validateFile(file, (isValid, fileSrc) => {
-          if (isValid) {
+      for (const file of files) {
+        if (file) {
+          validateFile(file, (isValid, fileSrc) => {
+            if (isValid) {
+              // Add the first image as the main image
+              if (currentThumbnails.length === 0) {
+                mainImage.src = fileSrc;
+              }
 
-            // Set the main image for modal7 and open the next modal
-            mainImage.src = fileSrc;
+              // Create a thumbnail and append it to the container
+              const thumbnail = document.createElement("img");
+              thumbnail.src = fileSrc;
+              thumbnail.classList.add("img-thumbnail");
+              thumbnail.style.width = "45px";
+              thumbnail.style.height = "45px";
+              thumbnail.style.cursor = "pointer";
+              thumbnail.style.objectFit = "cover";
+              thumbnail.style.padding = "0";
+              thumbnail.alt = `Thumbnail ${currentThumbnails.length + 1}`;
+              thumbnail.addEventListener("click", () => changeMainImage(fileSrc));
 
-            // Create a thumbnail dynamically and append it to the thumbnail container
-            const thumbnail = document.createElement("img");
-            thumbnail.src = fileSrc;
-            thumbnail.classList.add("img-thumbnail");
-            thumbnail.style.width = "45px";
-            thumbnail.style.height = "45px";
-            thumbnail.style.cursor = "pointer";
-            thumbnail.style.objectFit = "cover";
-            thumbnail.style.padding = "0";
-            thumbnail.alt = `Thumbnail ${currentThumbnails.length + 1}`;
-            thumbnail.addEventListener("click", () => changeMainImage(fileSrc));
+              thumbnailContainer.appendChild(thumbnail);
 
-            // Add the thumbnail to the container
-            thumbnailContainer.appendChild(thumbnail);
-
-            // Hide modal1 and show modal7
-            const modal1Instance = bootstrap.Modal.getInstance(modal1);
-            modal1Instance.hide();
-
-            const modal7Instance = new bootstrap.Modal(modal7);
-            modal7Instance.show();
-          }
-        });
+              // Update the image count
+              updateImageCount(thumbnailContainer.children.length);
+              thumbnails.push(fileSrc); // Add the image source to the array
+            }
+          });
+        }
       }
+
+      // Hide modal1 and show modal7
+      const modal1Instance = bootstrap.Modal.getInstance(modal1);
+      modal1Instance.hide();
+
+      const modal7Instance = new bootstrap.Modal(modal7);
+      modal7Instance.show();
     });
   }
 
+  // Change the main image
   function changeMainImage(src) {
     mainImage.src = src;
   }
 
+  // Update the image count
+  function updateImageCount(count) {
+    imageCounter.textContent = count;
+  }
+
+
+  // Delete the main image
+  deleteButton.addEventListener("click", () => {
+    const currentThumbnails = Array.from(thumbnailContainer.querySelectorAll("img"));
+    const currentMainImageSrc = mainImage.src;
+
+    // Find the index of the current main image in the thumbnails
+    const currentIndex = thumbnails.findIndex((src) => src === currentMainImageSrc);
+
+    if (currentIndex !== -1) {
+      // Remove the current thumbnail and image source from the array
+      thumbnails.splice(currentIndex, 1);
+      currentThumbnails[currentIndex].remove(); // Remove the thumbnail from the DOM
+
+      // Check if there are any thumbnails left
+      if (thumbnails.length > 0) {
+        // If there are still thumbnails, update the main image to the next available thumbnail
+        let nextIndex = (currentIndex === thumbnails.length) ? currentIndex - 1 : currentIndex;
+        mainImage.src = thumbnails[nextIndex]; // Set the new main image
+      } else {
+        // If no images remain, set to the default image
+        mainImage.src = DEFAULT_IMAGE;
+      }
+
+      // Update the image count
+      updateImageCount(thumbnails.length);
+    } else {
+      alert("No main image to delete.");
+    }
+  });
+
   // Attach file input handler
   const fileInputs = document.querySelectorAll(".fileInput");
-  fileInputs.forEach((fileInput) => handleFileInput(fileInput));
+  fileInputs.forEach((fileInput) => {
+    fileInput.setAttribute("multiple", "true"); // Allow multiple file selection
+    handleFileInput(fileInput);
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -683,7 +768,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Apply to all preview containers
-  const fileInputs = document.querySelectorAll(".fileInput");
+  const fileInputs = document.querySelectorAll(".fileInputModel2");
   fileInputs.forEach((input) => {
     handleFileInput(input);
   });
@@ -791,7 +876,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Apply to all preview containers
-  const fileInputs = document.querySelectorAll(".fileInput");
+  const fileInputs = document.querySelectorAll(".fileInput2");
   fileInputs.forEach((input) => {
     handleFileInput(input);
   });
@@ -899,7 +984,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Apply to all preview containers
-  const fileInputs = document.querySelectorAll(".fileInput");
+  const fileInputs = document.querySelectorAll(".fileInput3");
   fileInputs.forEach((input) => {
     handleFileInput(input);
   });
@@ -945,66 +1030,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   }
 
-  function handleFileInput(inputElement) {
-    inputElement.addEventListener("change", (event) => {
-      const files = Array.from(event.target.files);
-
-      // Check if more than 5 images are being uploaded
-      if (previewContainerWrapperModel4.children.length + files.length > 6) {
-        alert("You can only upload a maximum of 5 images.");
-        inputElement.value = "";
-        return;
-      }
-
-      files.forEach((file) => {
-        validateFile(file, (isValid) => {
-          if (isValid) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              // Create new preview container for the new image
-              const newPreviewContainer = document.createElement("div");
-              newPreviewContainer.classList.add("previewContainerModel4");
-              newPreviewContainer.style =
-                "height: 100px; width: 80px; display: flex; justify-content: center; align-items: center; background: url(" +
-                e.target.result +
-                ") no-repeat center center; background-size: contain; cursor: pointer; border-radius: 10px;";
-
-              // Create file input inside the new preview container
-              const input = document.createElement("input");
-              input.type = "file";
-              input.classList.add("fileInput");
-              input.style =
-                "opacity: 0; width: 100%; height: 20px; cursor: pointer; ;";
-
-              // Append input to the new preview container
-              newPreviewContainer.appendChild(input);
-
-              // Append the new preview container to the wrapper
-              previewContainerWrapperModel4.appendChild(newPreviewContainer);
-
-              // Apply the handler for new file inputs
-              handleFileInput(input);
-
-              // Check if 5 images are uploaded and hide addImageButton
-              if (previewContainerWrapperModel4.children.length >= 5) {
-                addImageButton.style.display = "none";
-              }
-            };
-            reader.readAsDataURL(file);
-          } else {
-            inputElement.value = "";
-          }
-        });
-      });
-
-      // Toggle the visibility of addImageButton based on the number of images in previewContainerWrapperModel4
-      if (previewContainerWrapperModel4.children.length === 0) {
-        addImageButton.style.display = "block";
-      } else {
-        addImageButton.style.display = "none";
-      }
-    });
-  }
+ 
 
   // Apply to all preview containers
   const fileInputs = document.querySelectorAll(".fileInput");
@@ -1013,113 +1039,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const addImageButton = document.getElementById("addImageButtonModel5");
-  const previewContainerWrapperModel5 = document.getElementById(
-    "previewContainerWrapperModel5"
-  );
 
-  function validateFile(file, callback) {
-    const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
-    if (!allowedTypes.includes(file.type)) {
-      alert("Only MP4, JPG, or PNG files are allowed.");
-      return callback(false);
-    }
-
-    const img = new Image();
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      if (file.type.startsWith("image")) {
-        img.onload = () => {
-          if (img.width <= 350 && img.height <= 812) {
-            callback(true);
-          } else {
-            alert("Image dimensions must be 350x812 pixels or smaller.");
-            callback(false);
-          }
-        };
-        img.src = e.target.result;
-      } else {
-        callback(true);
-      }
-    };
-
-    reader.onerror = () => {
-      alert("Error loading the file.");
-      callback(false);
-    };
-
-    reader.readAsDataURL(file);
-  }
-
-  function handleFileInput(inputElement) {
-    inputElement.addEventListener("change", (event) => {
-      const files = Array.from(event.target.files);
-
-      // Check if more than 5 images are being uploaded
-      if (previewContainerWrapperModel5.children.length + files.length > 6) {
-        alert("You can only upload a maximum of 5 images.");
-        inputElement.value = "";
-        return;
-      }
-
-      files.forEach((file) => {
-        validateFile(file, (isValid) => {
-          if (isValid) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              // Create new preview container for the new image
-              const newPreviewContainer = document.createElement("div");
-              newPreviewContainer.classList.add("previewContainerModel5");
-              newPreviewContainer.style =
-                "height: 100px; width: 80px; display: flex; justify-content: center; align-items: center; background: url(" +
-                e.target.result +
-                ") no-repeat center center; background-size: contain; cursor: pointer; border-radius: 10px;";
-
-              // Create file input inside the new preview container
-              const input = document.createElement("input");
-              input.type = "file";
-              input.classList.add("fileInput");
-              input.style =
-                "opacity: 0; width: 100%; height: 20px; cursor: pointer; ;";
-
-              // Append input to the new preview container
-              newPreviewContainer.appendChild(input);
-
-              // Append the new preview container to the wrapper
-              previewContainerWrapperModel5.appendChild(newPreviewContainer);
-
-              // Apply the handler for new file inputs
-              handleFileInput(input);
-
-              // Check if 5 images are uploaded and hide addImageButton
-              if (previewContainerWrapperModel5.children.length >= 5) {
-                addImageButton.style.display = "none";
-              }
-            };
-            reader.readAsDataURL(file);
-          } else {
-            inputElement.value = "";
-          }
-        });
-      });
-
-      // Toggle the visibility of addImageButton based on the number of images in previewContainerWrapperModel5
-      if (previewContainerWrapperModel5.children.length === 0) {
-        addImageButton.style.display = "block";
-      } else {
-        addImageButton.style.display = "none";
-      }
-    });
-  }
-
-  // Apply to all preview containers
-  const fileInputs = document.querySelectorAll(".fileInput");
-  fileInputs.forEach((input) => {
-    handleFileInput(input);
-  });
-});
 
 document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButtonModel6");
@@ -1229,46 +1149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const fileUploadElements = [
-    {
-      uploadId: "fileUpload1",
-      imageClass: "reaction-icon",
-      defaultBackground: "./assets/donations/Group 1000006854.svg",
-    },
-    {
-      uploadId: "fileUpload2",
-      imageClass: "reaction-icon",
-      defaultBackground: "./assets/donations/Group 1000006854.svg",
-    },
-    {
-      uploadId: "fileUpload3",
-      imageClass: "reaction-icon",
-      defaultBackground: "./assets/donations/Group 1000006854.svg",
-    },
-  ];
 
-  fileUploadElements.forEach(({ uploadId, imageClass, defaultBackground }) => {
-    const fileInput = document.getElementById(uploadId);
-    const reactionIcon = fileInput.closest(`.${imageClass}`);
-
-    fileInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          reactionIcon.style.background = `url('${reader.result}') no-repeat center`;
-          reactionIcon.style.backgroundSize = "contain";
-        };
-        reader.readAsDataURL(file);
-      } else {
-        // إذا لم يتم اختيار صورة، يتم إعادة الخلفية الافتراضية
-        reactionIcon.style.background = `url('${defaultBackground}') no-repeat center`;
-        reactionIcon.style.backgroundSize = "contain";
-      }
-    });
-  });
-});
 
 function changeMainImage(src) {
   const mainImage = document.getElementById("mainImage");
