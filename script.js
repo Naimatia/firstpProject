@@ -565,7 +565,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentThumbnails = thumbnailContainer.querySelectorAll("img");
       if (currentThumbnails.length + files.length > MAX_IMAGES) {
         alert(`You can only upload a maximum of ${MAX_IMAGES} images.`);
-        event.preventDefault(); // Prevent the file input action from proceeding
+        event.target.value = ""; // Clear the file input
         return; // Exit the function if the limit is exceeded
       }
 
@@ -698,6 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     reader.readAsDataURL(file);
   }
+  
 
   function handleFileInput(inputElement) {
     inputElement.addEventListener("change", (event) => {
@@ -784,19 +785,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
 
     reader.onload = (e) => {
-      if (file.type.startsWith("image")) {
-        img.onload = () => {
-          if (img.width <= 350 && img.height <= 812) {
-            callback(true);
-          } else {
-            alert("Image dimensions must be 350x812 pixels or smaller.");
-            callback(false);
-          }
-        };
-        img.src = e.target.result;
-      } else {
-        callback(true);
-      }
+      const img = new Image();
+      img.onload = () => {
+        // Resize the image if it exceeds the maximum dimensions
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          
+          // Calculate the new dimensions while preserving the aspect ratio
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+          
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          // Draw the resized image onto the canvas
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+          // Get the resized image as a data URL
+          const resizedDataUrl = canvas.toDataURL(file.type);
+
+          callback(true, resizedDataUrl); // Pass the resized image to the callback
+        } else {
+          callback(true, e.target.result); // No resizing needed
+        }
+      };
+
+      img.src = e.target.result;
     };
 
     reader.onerror = () => {
@@ -892,19 +908,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
 
     reader.onload = (e) => {
-      if (file.type.startsWith("image")) {
-        img.onload = () => {
-          if (img.width <= 350 && img.height <= 812) {
-            callback(true);
-          } else {
-            alert("Image dimensions must be 350x812 pixels or smaller.");
-            callback(false);
-          }
-        };
-        img.src = e.target.result;
-      } else {
-        callback(true);
-      }
+      const img = new Image();
+      img.onload = () => {
+        // Resize the image if it exceeds the maximum dimensions
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          
+          // Calculate the new dimensions while preserving the aspect ratio
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+          
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          // Draw the resized image onto the canvas
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+          // Get the resized image as a data URL
+          const resizedDataUrl = canvas.toDataURL(file.type);
+
+          callback(true, resizedDataUrl); // Pass the resized image to the callback
+        } else {
+          callback(true, e.target.result); // No resizing needed
+        }
+      };
+
+      img.src = e.target.result;
     };
 
     reader.onerror = () => {
@@ -1000,19 +1031,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
 
     reader.onload = (e) => {
-      if (file.type.startsWith("image")) {
-        img.onload = () => {
-          if (img.width <= 350 && img.height <= 812) {
-            callback(true);
-          } else {
-            alert("Image dimensions must be 350x812 pixels or smaller.");
-            callback(false);
-          }
-        };
-        img.src = e.target.result;
-      } else {
-        callback(true);
-      }
+      const img = new Image();
+      img.onload = () => {
+        // Resize the image if it exceeds the maximum dimensions
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          
+          // Calculate the new dimensions while preserving the aspect ratio
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+          
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          // Draw the resized image onto the canvas
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+          // Get the resized image as a data URL
+          const resizedDataUrl = canvas.toDataURL(file.type);
+
+          callback(true, resizedDataUrl); // Pass the resized image to the callback
+        } else {
+          callback(true, e.target.result); // No resizing needed
+        }
+      };
+
+      img.src = e.target.result;
     };
 
     reader.onerror = () => {
@@ -1050,20 +1096,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const img = new Image();
     const reader = new FileReader();
 
-    reader.onload = (e) => {
-      if (file.type.startsWith("image")) {
-        img.onload = () => {
-          if (img.width <= 350 && img.height <= 812) {
-            callback(true);
-          } else {
-            alert("Image dimensions must be 350x812 pixels or smaller.");
-            callback(false);
-          }
-        };
-        img.src = e.target.result;
-      } else {
-        callback(true);
-      }
+   reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        // Resize the image if it exceeds the maximum dimensions
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          
+          // Calculate the new dimensions while preserving the aspect ratio
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+          
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          // Draw the resized image onto the canvas
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+          // Get the resized image as a data URL
+          const resizedDataUrl = canvas.toDataURL(file.type);
+
+          callback(true, resizedDataUrl); // Pass the resized image to the callback
+        } else {
+          callback(true, e.target.result); // No resizing needed
+        }
+      };
+
+      img.src = e.target.result;
     };
 
     reader.onerror = () => {
@@ -1074,66 +1135,87 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   }
 
-  function handleFileInput(inputElement) {
-    inputElement.addEventListener("change", (event) => {
-      const files = Array.from(event.target.files);
-
-      // Check if more than 5 images are being uploaded
-      if (previewContainerWrapperModel6.children.length + files.length > 6) {
-        alert("You can only upload a maximum of 5 images.");
-        inputElement.value = "";
-        return;
-      }
-
-      files.forEach((file) => {
-        validateFile(file, (isValid) => {
-          if (isValid) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              // Create new preview container for the new image
-              const newPreviewContainer = document.createElement("div");
-              newPreviewContainer.classList.add("previewContainerModel6");
-              newPreviewContainer.style =
-                "height: 100px; width: 80px; display: flex; justify-content: center; align-items: center; background: url(" +
-                e.target.result +
-                ") no-repeat center center; background-size: contain; cursor: pointer; border-radius: 10px;";
-
-              // Create file input inside the new preview container
-              const input = document.createElement("input");
-              input.type = "file";
-              input.classList.add("fileInput");
-              input.style =
-                "opacity: 0; width: 100%; height: 20px; cursor: pointer; ;";
-
-              // Append input to the new preview container
-              newPreviewContainer.appendChild(input);
-
-              // Append the new preview container to the wrapper
-              previewContainerWrapperModel6.appendChild(newPreviewContainer);
-
-              // Apply the handler for new file inputs
-              handleFileInput(input);
-
-              // Check if 5 images are uploaded and hide addImageButton
-              if (previewContainerWrapperModel6.children.length >= 5) {
-                addImageButton.style.display = "none";
+  document.addEventListener("DOMContentLoaded", () => {
+    const addImageButtonModel2 = document.getElementById("addImageButtonModel2");
+    const previewContainerWrapperModel2 = document.getElementById("previewContainerWrapperModel2");
+    const previewContainerWrapperModel6 = document.getElementById("previewContainerWrapperModel6");
+  
+    let totalImages = 0;
+  
+    function validateFile(file, callback) {
+      // Logique de validation
+    }
+  
+    function handleFileInput(inputElement, namespace) {
+      inputElement.addEventListener("change", (event) => {
+        const files = Array.from(event.target.files);
+        const wrapperElement = namespace === 'model2' ? previewContainerWrapperModel2 : previewContainerWrapperModel6;
+        const currentChildren = wrapperElement.children.length;
+  
+        // Vérifiez si plus de 5 images sont ajoutées (pour model2)
+        if (namespace === 'model2' && currentChildren + files.length > 6) {
+          alert("You can only upload a maximum of 5 images.");
+          event.preventDefault();
+          return;
+        }
+  
+        files.forEach((file) => {
+          if (file) {
+            validateFile(file, (isValid) => {
+              if (isValid) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  // Créer un nouveau conteneur de prévisualisation pour la nouvelle image
+                  const newPreviewContainer = document.createElement("div");
+                  newPreviewContainer.classList.add(`previewContainer${namespace}`);
+                  newPreviewContainer.style = `height: 100px; width: 80px; display: flex; justify-content: center; align-items: center; background: url(${e.target.result}) no-repeat center center; background-size: contain; cursor: pointer; border-radius: 10px;`;
+  
+                  // Créer un input de fichier à l'intérieur du nouveau conteneur de prévisualisation
+                  const input = document.createElement("input");
+                  input.type = "file";
+                  input.classList.add("fileInput");
+                  input.style = "opacity: 0; width: 100%; height: 20px; cursor: pointer;";
+  
+                  // Ajouter l'input au nouveau conteneur de prévisualisation
+                  newPreviewContainer.appendChild(input);
+  
+                  // Ajouter le nouveau conteneur de prévisualisation au wrapper
+                  wrapperElement.appendChild(newPreviewContainer);
+  
+                  // Appliquer le gestionnaire pour les nouveaux inputs de fichier
+                  handleFileInput(input, namespace);
+  
+                  // Vérifier si 5 images sont ajoutées et cacher addImageButton
+                  if (currentChildren >= 5) {
+                    addImageButtonModel2.style.display = "none";
+                  }
+                };
+                reader.readAsDataURL(file);
+              } else {
+                inputElement.value = "";
               }
-            };
-            reader.readAsDataURL(file);
-          } else {
-            inputElement.value = "";
+            });
           }
         });
+  
+        // Mettre à jour la visibilité d'addImageButton basée sur le nombre d'images dans previewContainerWrapperModel6
+        if (wrapperElement.children.length === 0) {
+          addImageButtonModel2.style.display = "block";
+        } else {
+          addImageButtonModel2.style.display = "none";
+        }
+  
+        totalImages += files.length;
       });
-
-      // Toggle the visibility of addImageButton based on the number of images in previewContainerWrapperModel6
-      if (previewContainerWrapperModel6.children.length === 0) {
-        addImageButton.style.display = "block";
-      } else {
-        addImageButton.style.display = "none";
-      }
+    }
+  
+    // Appliquer les handlers aux éléments de fichier
+    const fileInputs = document.querySelectorAll(".fileInputModel2, .fileInput");
+    fileInputs.forEach((input) => {
+      handleFileInput(input, input.classList.contains("fileInputModel2") ? 'model2' : '');
     });
-  }
+  });
+  
 
   // Apply to all preview containers
   const fileInputs = document.querySelectorAll(".fileInput");
