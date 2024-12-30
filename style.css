@@ -56,23 +56,24 @@ opacity: 0px;
 }
 
 .toggle-card {
+  width: 360px; height: 62px; margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 10px;
   border-radius: 5px;
   background-color: #f8f9fa;
 }
 .toggle-item {
+  width: 95px;
+  height: 47px;
   text-align: center;
-  width: 100px;
   background-color: #e0e0e0;
-  padding: 5px;
   border-radius: 10px;
 }
 .form-switch .form-check-input {
-  width: 2.5rem;
-  height: 1.25rem;
+  width: 40px;
+  height: 20px;
   background-color: #b4b4b4;
   border-radius: 1.25rem;
 }
@@ -81,9 +82,10 @@ opacity: 0px;
 }
 .toggle-item span {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 1px;
   font-size: 14px;
   font-weight: 500;
+  font-family: Genos;
   color: #1b1e34;
 }
 
@@ -188,4 +190,23 @@ textarea::-webkit-scrollbar {
 /* Masquer uniquement les flèches */
 textarea::-webkit-scrollbar-button {
   display: none;
+}
+
+
+.switch-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 95px;
+  height: 47px;
+}
+
+.switch-label {
+  font-size: 14px;
+  color: #212529;
+  margin-top: 5px;
 }
