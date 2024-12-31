@@ -23,77 +23,48 @@
 
   </div>
 
-  <!-- Popup Modal -->
+  <!-- Popup Modal  -->
   <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style="width: 510px; height: 796px; background: #F2F2F2; border-radius: 10px;
-">
-        <div style="height: 314; background-color: white; border-radius: 10px 10px 0 0 ">
-          <!-- Header Section -->
-          <div class="modal-header border-0">
-            <div style="width: 284px; height: 65px; font-family: Genos; font-weight: 600px;">
-              <h5 class="modal-title" id="popupModalLabel">Welcome to:</h5>
-              <h6>YekBun Sharing section</h6>
-            </div>
+      <div class="modal-content" style="width: 510px; height: 796px; 
+      background: #F2F2F2; 
+      border-radius: 10px;">
+        <!-- Header Section -->
+        <div class="modal-header" style="height: 314px; 
+        background-color: white;
+         border-radius: 10px 10px 0 0;
+         display: flex; 
+         flex-direction: column;">
 
+<div style="margin-left: -200px; width: 284px; height: 65px; font-family: Genos; 
+font-weight: 600px;">
+            <h5 class="modal-title" id="popupModalLabel">Welcome to:</h5>
+            <h6>YekBun Sharing section</h6>
           </div>
-
-          <div class="mb-3 text-center" style="width: 400px; height: 214px; margin-left: 20px;">
+        
+          <div class=" text-center mt-3">
             <img src="assets/g10.svg" alt="Illustration" class="img-fluid" />
           </div>
         </div>
+
         <!-- Modal Body -->
-        <div class="modal-body" style="width: 510px;">
+        <div class="modal-body">
+      
           <div style="font-family: Genos;">
-            <h5 class="modal-title" id="popupModalLabel" style="font-size: 600;">Select a Option:</h5>
+            <h5 class="modal-title" id="popupModalLabel">Select a Option:</h5>
             <h6>Share info with User</h6>
           </div>
 
-          <!-- Icons Grid 
-          <div class="row row-cols-2 row-cols-md-3 g-3">
-            
-            <div class="col">
-              <img src="assets/first-svg-dialog/Frame%201000008484.svg" alt="Illustration" class="img-fluid"
-                data-target="#modal1" data-bs-dismiss="modal" />
-                <p
-            </div>
-
-            <div class="col">
-              <img src="assets/Group%201000008447.svg" alt="Illustration" class="img-fluid" data-target="#modal2"
-                data-bs-dismiss="modal" />
-            </div>
-
-            <div class="col">
-              <img src="assets/Group%201000008447(1).svg" alt="Illustration" class="img-fluid" data-target="#modal3"
-                data-bs-dismiss="modal" />
-            </div>
-
-            <div class="col">
-              <img src="assets/Group%201000008453.svg" alt="Illustration" class="img-fluid" data-target="#modal4"
-                data-bs-dismiss="modal" />
-            </div>
-
-            <div class="col">
-              <img src="assets/Group%201000008452.svg" alt="Illustration" class="img-fluid" data-target="#modal5"
-                data-bs-dismiss="modal" />
-            </div>
-
-            <div class="col">
-              <img src="assets/Group%201000008451.svg" alt="Illustration" class="img-fluid" data-target="#modal6"
-                data-bs-dismiss="modal" />
-            </div>
-          </div>
-        </div>
-
- -->
+          <!-- Icons Grid -->
           <div class="container my-4" style="width: 496px; height: 395px; padding: 0;">
             <div class="row row-col-3 g-4">
 
               <div class="col" style="margin-top: 2px; 
-      padding-left: 0; padding-right: 0;" data-bs-toggle="modal" data-bs-target="#modal1">
+      padding-left: 0; padding-right: 0;">
                 <div class="card text-center" style="width: 150px; height: 190px;">
                   <img src="assets/third-svg-dialog/Group 1000008347.svg" class="card-img-top" alt="System Info"
-                    style="width: 143px; height: 125px;">
+                    style="width: 143px; height: 125px;"
+                    data-target="#modal1" data-bs-dismiss="modal">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
                     <h5 class="card-title" style="margin: 0; font-size: Genos;">System</h5>
                     <p style="font-size: Genos; margin-bottom: 2px;">share System info</p>
@@ -101,43 +72,44 @@
                 </div>
               </div>
               <div class="col" style="margin-top: 2px; 
-      padding-left: 0; padding-right: 0;" data-bs-toggle="modal" data-bs-target="#modal2">
+      padding-left: 0; padding-right: 0;" >
                 <div class="card text-center" style="width: 150px; height: 190px;">
                   <img src="assets/third-svg-dialog/Group%201000008357.svg" class="card-img-top" alt="Donation"
-                    style="width: 143px; height: 125px;">
+                    style="width: 143px; height: 125px;"
+                    data-target="#modal2" data-bs-dismiss="modal">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
                     <h5 class="card-title" style="margin: 0; font-size: Genos;">Donation</h5>
                     <p class="card-text" style="font-size: Genos;">Create Donation</p>
                   </div>
                 </div>
               </div>
-              <div class="col" style="margin-top: 2px; padding-left: 0; padding-right: 0;" data-bs-toggle="modal"
-                data-bs-target="#modal3">
+              <div class="col" style="margin-top: 2px; padding-left: 0; padding-right: 0;" >
                 <div class="card text-center" style="width: 150px; height: 190px;">
                   <img src="assets/third-svg-dialog/Group.svg" class="card-img-top" alt="Surveys"
-                    style="width: 143px; height: 125px; padding: 0;">
+                    style="width: 143px; height: 125px; padding: 0;"
+                    data-target="#modal3" data-bs-dismiss="modal">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
                     <h5 class="card-title" style="margin: 0; font-size: Genos;">Surveys</h5>
                     <p class="card-text" style="font-size: Genos;">Create Surveys</p>
                   </div>
                 </div>
               </div>
-              <div class="col" style="margin-top: 10px; padding-left: 0; padding-right: 0;" data-bs-toggle="modal"
-                data-bs-target="#modal4">
+              <div class="col" style="margin-top: 10px; padding-left: 0; padding-right: 0;" >
                 <div class="card text-center" style="width: 150px; height: 190px;">
                   <img src="assets/third-svg-dialog/Group%201000008455.svg" class="card-img-top" alt="Greetings"
-                    style="width: 143px; height: 125px;">
+                    style="width: 143px; height: 125px;"
+                    data-target="#modal1" data-bs-dismiss="modal">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
                     <h5 class="card-title" style="margin: 0; font-size: Genos;">Greetings</h5>
                     <p class="card-text" style="font-size: Genos;">Share Greetings</p>
                   </div>
                 </div>
               </div>
-              <div class="col" style="margin-top: 10px; padding-left: 0; padding-right: 0;" data-bs-toggle="modal"
-                data-bs-target="#modal5">
+              <div class="col" style="margin-top: 10px; padding-left: 0; padding-right: 0;" >
                 <div class="card text-center" style="width: 150px; height: 190px;">
                   <img src="assets/third-svg-dialog/Ñëîé_1.svg" class="card-img-top" alt="Events"
-                    style="width: 143px; height: 125px;">
+                    style="width: 143px; height: 125px;" 
+                    data-target="#modal5" data-bs-dismiss="modal">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
                     <h5 class="card-title" style="margin: 0; font-size: Genos;">Events</h5>
                     <p class="card-text" style="font-size: Genos;">Share Events</p>
@@ -145,8 +117,8 @@
                 </div>
               </div>
               <div class="col" style="margin-top: 10px; padding-left: 0; padding-right: 0;">
-                <div class="card text-center" style="width: 150px; height: 190px;" data-bs-toggle="modal"
-                  data-bs-target="#modal6">
+                <div class="card text-center" style="width: 150px; height: 190px;" 
+                data-target="#modal6" data-bs-dismiss="modal">
                   <img src="assets/third-svg-dialog/Group%201000008478.svg" class="card-img-top" alt="SOS"
                     style="width: 143px; height: 125px;">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
@@ -160,6 +132,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+
+
+
 
     <!-- Secondary Modals -->
     <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="Modlal1">
