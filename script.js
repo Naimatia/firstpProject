@@ -69,6 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll("#sharebuttonto9");
+
+  buttons.forEach((createButton) => {
+    createButton.addEventListener("click", () => {
+      const currentModal = bootstrap.Modal.getInstance(
+        document.getElementById("modal14")
+      );
+      currentModal.hide();
+      const targetModalId = createButton.getAttribute("data-target");
+      const targetModal = new bootstrap.Modal(
+        document.querySelector(targetModalId)
+      );
+      targetModal.show();
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("unlimitedButton");
   createButton.addEventListener("click", () => {
     const currentModal = bootstrap.Modal.getInstance(
