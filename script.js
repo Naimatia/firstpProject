@@ -1,24 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   const startWorkButton = document.getElementById("startWorkButton");
-  const popupModal = new bootstrap.Modal(document.getElementById("popupModal"));
-  const images = document.querySelectorAll(".row img");
+  const popupModalElement = document.getElementById("popupModal");
+  const popupModal = new bootstrap.Modal(popupModalElement);
+  
+  // Select only .col elements with a data-bs-target attribute
+  const divs = document.querySelectorAll(".col[data-bs-target]");
 
-  // Show initial popup modal
+  // Show initial popup modal when the startWorkButton is clicked
   startWorkButton.addEventListener("click", () => {
     popupModal.show();
   });
 
-  // Add click event to each image
-  images.forEach((image) => {
-    image.addEventListener("click", () => {
-      const targetModalId = image.getAttribute("data-target");
+  // Add click event to each .col element with a data-bs-target attribute
+  // Add click event to each col
+  divs.forEach((div) => {
+    div.addEventListener("click", () => {
+      const targetModalId = div.getAttribute("data-bs-target");
       const targetModal = new bootstrap.Modal(
         document.querySelector(targetModalId)
       );
       targetModal.show();
+
     });
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("createButton");
