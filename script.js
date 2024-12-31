@@ -159,6 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("backButtonToMainFrModel1");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal4")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("backButtonToMainFrModel15");
   createButton.addEventListener("click", () => {
     const currentModal = bootstrap.Modal.getInstance(
@@ -233,6 +248,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("backButtonToModal4");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal14")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
 document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("eventButton");
   createButton.addEventListener("click", () => {
@@ -660,7 +689,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Update the image count
       updateImageCount(thumbnails.length);
     } else {
-      alert("No main image to delete.");
     }
   });
 
@@ -673,7 +701,176 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+/*************greeeting  */
 
+document.addEventListener("DOMContentLoaded", () => {
+  const addImageButton = document.getElementById("addImageButton");
+  const previewContainerWrapper = document.getElementById("previewContainerWrapper");
+  const modal4 = document.getElementById("modal4");
+  const modal14 = document.getElementById("modal14");
+  const mainImage = document.getElementById("mainImage");
+  const thumbnailContainer = document.getElementById("thumbnailContainer");
+  const imageCounter = document.getElementById("imageCounter");
+  const deleteButton = document.getElementById("deleteButton");
+
+  const MAX_IMAGES = 1;
+  const DEFAULT_IMAGE = "assets/second-svg-dialog/image%201425.svg"; // Default image when no images are available
+
+  let thumbnails = []; // Array to store the image sources
+
+  // Validate the file
+  function validateFile(file, callback) {
+    const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
+    if (!allowedTypes.includes(file.type)) {
+      return callback(false, null);
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        // Resize the image if it exceeds the maximum dimensions
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          
+          // Calculate the new dimensions while preserving the aspect ratio
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+          
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          // Draw the resized image onto the canvas
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+          // Get the resized image as a data URL
+          const resizedDataUrl = canvas.toDataURL(file.type);
+
+          callback(true, resizedDataUrl); // Pass the resized image to the callback
+        } else {
+          callback(true, e.target.result); // No resizing needed
+        }
+      };
+
+      img.src = e.target.result;
+    };
+
+    reader.onerror = () => {
+      callback(false, null);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  // Handle file input
+  function handleFileInput(inputElement) {
+    inputElement.addEventListener("change", async (event) => {
+      console.log("File input change event triggered"); // Debugging point
+
+      const files = event.target.files;
+      const currentThumbnails = thumbnailContainer.querySelectorAll("img");
+      if (currentThumbnails.length + files.length > MAX_IMAGES) {
+        alert(`You can only upload a maximum of ${MAX_IMAGES} images.`);
+        event.target.value = ""; // Clear the file input
+        return; // Exit the function if the limit is exceeded
+      }
+
+      for (const file of files) {
+        console.log("Processing file:", file.name);
+
+        if (file) {
+          validateFile(file, (isValid, fileSrc) => {
+            if (isValid) {
+              // Add the first image as the main image
+              if (currentThumbnails.length === 0) {
+                console.log("Setting main image:", fileSrc);
+
+                mainImage.src = fileSrc;
+              }
+
+              // Create a thumbnail and append it to the container
+              const thumbnail = document.createElement("img");
+              thumbnail.src = fileSrc;
+              thumbnail.classList.add("img-thumbnail");
+              thumbnail.style.width = "45px";
+              thumbnail.style.height = "45px";
+              thumbnail.style.cursor = "pointer";
+              thumbnail.style.objectFit = "cover";
+              thumbnail.style.padding = "0";
+              thumbnail.alt = `Thumbnail ${currentThumbnails.length + 1}`;
+              thumbnail.addEventListener("click", () => changeMainImage(fileSrc));
+
+              thumbnailContainer.appendChild(thumbnail);
+
+              // Update the image count
+              updateImageCount(thumbnailContainer.children.length);
+              thumbnails.push(fileSrc); // Add the image source to the array
+            }
+          });
+        }
+      }
+
+      // Hide modal1 and show modal7
+      const modal4Instance = bootstrap.Modal.getInstance(modal4);
+      modal4Instance.hide();
+
+      const modal14Instance = new bootstrap.Modal(modal14);
+      modal14Instance.show();
+    });
+  }
+
+  // Change the main image
+  function changeMainImage(src) {
+    mainImage.src = src;
+  }
+
+  // Update the image count
+  function updateImageCount(count) {
+    imageCounter.textContent = count;
+  }
+
+  // Delete the main image
+  deleteButton.addEventListener("click", () => {
+    const currentThumbnails = Array.from(thumbnailContainer.querySelectorAll("img"));
+    const currentMainImageSrc = mainImage.src;
+
+    // Find the index of the current main image in the thumbnails
+    const currentIndex = thumbnails.findIndex((src) => src === currentMainImageSrc);
+
+    if (currentIndex !== -1) {
+      // Remove the current thumbnail and image source from the array
+      thumbnails.splice(currentIndex, 1);
+      currentThumbnails[currentIndex].remove(); // Remove the thumbnail from the DOM
+
+      // Check if there are any thumbnails left
+      if (thumbnails.length > 0) {
+        // If there are still thumbnails, update the main image to the next available thumbnail
+        let nextIndex = (currentIndex === thumbnails.length) ? currentIndex - 1 : currentIndex;
+        mainImage.src = thumbnails[nextIndex]; // Set the new main image
+      } else {
+        // If no images remain, set to the default image
+        mainImage.src = DEFAULT_IMAGE;
+      }
+
+      // Update the image count
+      updateImageCount(thumbnails.length);
+    } else {
+    }
+  });
+
+  // Attach file input handler
+  const fileInputs = document.querySelectorAll(".fileInput4");
+  fileInputs.forEach((fileInput) => {
+    fileInput.setAttribute("multiple", "true"); // Allow multiple file selection
+    handleFileInput(fileInput);
+  });
+});
+
+
+/*
 document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButtonModel2");
   const previewContainerWrapperModel2 = document.getElementById(
@@ -1238,7 +1435,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleFileInput(input);
   });
 });
-
+*/
 
 
 function changeMainImage(src) {

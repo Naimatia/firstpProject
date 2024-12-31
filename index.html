@@ -104,7 +104,7 @@
                 <div class="card text-center" style="width: 150px; height: 190px;">
                   <img src="assets/third-svg-dialog/Group%201000008455.svg" class="card-img-top" alt="Greetings"
                     style="width: 143px; height: 125px;"
-                    data-target="#modal1" data-bs-dismiss="modal">
+                    data-target="#modal4" data-bs-dismiss="modal">
                   <div class="card-body" style="width: 143px; height: 35px; padding: 0;">
                     <h5 class="card-title" style="margin: 0; font-size: Genos;">Greetings</h5>
                     <p class="card-text" style="font-size: Genos;">Share Greetings</p>
@@ -735,113 +735,840 @@
       </div>
     </div>
 
-    <div class="modal fade" id="modal4" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" style="position: relative">
-        <div class="modal-content container" style="background-color: #e0e0e0; padding: 5px">
-          <div class="modal-body" style="
-              position: relative;
-              border: 2px dashed gray;
+
+
+       <!-- Greeting Modals -->
+
+       <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="Modlal4">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content" style="Width:375px; Height:812px; background-color: #f8f9fa; 
+          padding: 5px;
+          border-radius: 10px;">
+            <div class="modal-body" style="
+                position: relative;
+                border-radius: 10px;
+                border: 2px dashed #356899
+              ">
+              <div style="
+                  width: Fixed (333px)px;
+                  height: Hug (761.24px)px;
+                  display: flex;
+                  border-radius: 10px;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 110px;
+                  
+                ">
+                <img src="assets/first-svg-dialog/Group%201000008335.svg" alt="Illustration" data-target="#modal6"
+                  data-bs-dismiss="modal" style="height: 250px; width: 100%" />
+  
+                <div id="previewContainerWrapper" style="width: 100%; display: flex; gap: 10px; flex-wrap: wrap">
+                  <div class="previewContainer" style="
+                      width: 333px;
+                      height: 81px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      background-size: contain;
+                      cursor: pointer;
+                      border-radius: 10px;
+                    ">
+                    <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
+                      data-bs-dismiss="modal" style="height: 96px; width: 69%" id="addImageButton" />
+  
+                    <input type="file" class="fileInput4" multiple accept="image/*" style="
+                        opacity: 0;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        cursor: pointer;
+                      " />
+                  </div>
+                </div>
+              </div>
+  
+              <div style="
+              width: 333px;
+              height: 80px;
+              display: flex;
+              align-items: center;
+              justify-content: center; /* Centrage horizontal */
+              gap: 10px; /* Réduit l'écart entre l'image et le texte */
+              background-color: #fff;
+              margin-top: 230px;
               border-radius: 10px;
+              padding: 5px; /* Ajoute un peu de padding pour un espacement interne */
             ">
-            <div style="
-                width: 100%;
-                height: 80%;
+              <!-- Image à gauche -->
+              <div style="display: flex; align-items: center; justify-content: center;">
+                <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
+                  class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;" />
+                <input type="file" id="imageUploader2" accept="image/*" style="display: none;" />
+              </div>
+            
+              <!-- Texte à droite -->
+              <div style="
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 50px;
+                justify-content: center; /* Centrage vertical */
+                gap: 6px;
+                font-family: Genos;
               ">
-              <img src="assets/first-svg-dialog/Group%201000008335.svg" alt="Illustration" data-target="#modal6"
-                data-bs-dismiss="modal" style="height: 250px; width: 100%" />
-
-              <div id="previewContainerWrapperModel4" style="width: 100%; display: flex; gap: 10px; flex-wrap: wrap">
-                <div class="previewContainerModel4" style="
-                    width: 100%;
+                <h4 style="margin: 0; text-align: center;">Another Selection</h4>
+                <h6 style="margin: 0; text-align: center;">File Size H 812 - W 350</h6>
+                <p style="margin: 0; text-align: center;">MP4-JPG Or PNG - Max 1 Image</p>
+              </div>
+            </div>
+              <div style="
+                  position: absolute;
+                  bottom: -10%;
+                  left: 100px;
+                  width: 202px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 10px;
+                ">
+                <div id="sosButton" data-target="#popupModal" style="
+                    outline: none;
+                    width: 50px;
+                    height: 40px;
+                    background-color: #fff;
                     display: flex;
-                    justify-content: center;
                     align-items: center;
-                    background-size: contain;
-                    cursor: pointer;
+                    justify-content: center;
                     border-radius: 10px;
                   ">
-                  <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
-                    data-bs-dismiss="modal" style="height: 250px; width: 100%" id="addImageButtonModel4" />
-
-                  <input type="file" class="fileInput" style="
-                      opacity: 0;
-                      width: 100%;
-                      height: 100%;
-                      position: absolute;
-                      cursor: pointer;
-                    " />
+                  <img src="assets/first-svg-dialog/Group%201000008245.svg" />
                 </div>
-              </div>
-            </div>
-
-            <div style="
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                gap: 50px;
-                background-color: #fff;
-                margin-top: 20px;
-                border-radius: 10px;
-                padding: 5px;
-                margin-bottom: 10px;
-              ">
-              <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
-                class="img-fluid" style="height: 80px; width: 80px; cursor: pointer" />
-              <input type="file" id="imageUploader2" accept="image/*" style="display: none" />
-              <div style="text-align: center">
-                <h4>Multi Selection</h4>
-                <h6>File Size H 812 - W 350</h6>
-                <p>MP4-JPG Or PNG - Max 5 Image</p>
-              </div>
-            </div>
-
-            <div style="
-                position: absolute;
-                bottom: -10%;
-                left: 0;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-              ">
-              <div id="backButtonToMainFrModel4" data-target="#popupModal" style="
-                  outline: none;
-                  width: 50px;
-                  height: 40px;
-                  background-color: #fff;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  border-radius: 10px;
-                ">
-                <img src="assets/first-svg-dialog/Group%201000008245.svg" />
-              </div>
-
-              <div id="sosButton" data-target="#modal14" style="
-                  outline: none;
-                  width: 100px;
-                  height: 40px;
-                  background-color: #fff;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  border-radius: 10px;
-                  gap: 5px;
-                ">
-                Create
-                <img src="assets/first-svg-dialog/Path_2-2.svg" />
+  
+                <div id="backButtonToMainFrModel1" data-target="#modal14" style="
+                    outline: none;
+                    width: 100px;
+                    height: 40px;
+                    background-color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 10px;
+                    gap: 5px;
+                    font-family: Genos;
+                  ">
+                  Create
+                  <img src="assets/first-svg-dialog/Path_2-2.svg" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="modal fade" id="modal14" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content" style="
+                width: 375px;
+                height: 812px;
+                gap: 0px;
+                opacity: 0px;
+                border-radius: 10px; 
+                
+              ">
+            <div style="
+          position: absolute; 
+          top: 11px; 
+          right: 5px; 
+          width: 80px; 
+          height: 40px; 
+          border-radius: 10px; 
+          z-index: 1000; display: flex; 
+          align-items: center;
+          background: #1c274c62;
+              ">
+  
+  
+              <!-- Image -->
+              <img src="assets/second-svg-dialog/Vector.svg"
+                style="width: 30px; height: 30px; margin: 5px; border-radius: 5px; object-fit: cover; color:#FFFFFF;" />
+              <!-- Number on the right -->
+              <div id="imageCounter" style=" 
+            font-size: 30px; 
+            font-weight: bold; 
+            font-family: Genos;
+            color: white; 
+            width: 30px; 
+            height: 30px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;">
+                0 <!-- Replace with dynamic number if needed -->
+              </div>
+  
+            </div>
+  
+  
+            <div style="
+          width: 50px;
+          height: 272px;
+                position: absolute;
+                top: 10%;
+                right: -17%;
+                border-radius: 5px;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+              ">
+  
+              <img id="deleteButton" src="assets/second-svg-dialog/Group%201000008246.svg"
+                style="width: 100%; height: 100%; cursor: pointer;" />
+  
+  
+              <img id="systemButton" data-target="#modal9" src="assets/second-svg-dialog/Group%201000008244.svg"
+                style="width: 100%; height: 100%; cursor: pointer;" />
+  
+              <img id="backButtonToModal4" data-target="#modal4" src="assets/second-svg-dialog/Group%201000008247.svg"
+                style="width: 100%; height: 100%; cursor: pointer;" />
+  
+            </div>
+  
+            <div class="modal-body">
+              <!-- الصورة الرئيسية -->
+              <img id="mainImage" src="assets/second-svg-dialog/image%201425.svg" class="img-fluid" style="
+                  position: absolute;
+                  top: 0%;
+                  left: 0%;
+                  width: 375px;
+                  height: 812px;
+                  border-radius: 10px;
+                " alt="Main View" />
+            </div>
+  
+            <div class="modal-footer border-0 d-flex justify-content-center"
+              style="position: absolute; bottom: 0; left: 0; width: 100%">
+              <div style="
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                position: absolute;
+                top: -30%;
+                padding: 5px;
+              ">
+              </div>
+  
+              <div style="
+                background-color: #deeff0ab;
+                border-radius: 10px;
+                width: 362px;
+                height: 113px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+              ">
+                <textarea name="" id="" placeholder="Type Your Text.." class="form-control" style="
+                width: 348px;
+                height: 47px;
+                background-color: white;
+                border-radius: 10px;
+                font-weight: bold;
+                font-family: Genos;
+                outline: none;
+                border: none;
+                resize: none;
+                padding: 10px;
+              "></textarea>
+  
+                <div style="
+                width: 349px;
+                height: 45px;
+                display: flex;
+                gap: 30px;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+              " id="thumbnailContainer">
+                  <!-- Thumbnails will be dynamically inserted here -->
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="modal fade" id="modal9" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-model-image container" style="background: #000000BF;width: 375px;
+  height: 812px; padding: 0px;border-radius: 10px;">
+  
+            <div style="
+                position: absolute;
+                top: 0%;
+                width: 50px;
+                height: 168;
+                right: -17%;
+                border-radius: 5px;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+              ">
+              <img src="assets/second-svg-dialog/Group%201000008246.svg" style="width: 50px; height: 50px" />
+  
+              <img src="assets/second-svg-dialog/Group%201000008244.svg" style="width: 50px; height: 50px" />
+  
+              <img id="backButtonToModal9" data-target="#modal14" src="assets/second-svg-dialog/Group%201000008247.svg"
+                style="width: 50px; height: 50px" cursor: pointer;/>
+            </div>
+  
+            <div class="modal-body" style="
+          width: 360px;
+          height: 400px;
+          padding: 0;
+          top: 8px;
+          left: 5px;
+          ">
+  
+              <div style="width: 360px;
+                  height: 423px; background-color: white;
+                  border-radius: 10px;
+                  padding: 5px;
+  ">
+                <div style="
+              width: 350px;
+              height: 30;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0;
+                    top: 10px;
+                  ">
+  
+                  <div style="
+                      background-color: #f8f9fa;
+                      border-radius: 5px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      width: 197px;
+                      height: 30px;
+                      padding: 5px;
+                    ">
+                    <div style="
+                        display: flex;
+                        align-items: start;
+                        align-items: center;
+                        width: 130px;
+                        height: 30px;
+                      ">
+                      <img src="assets/third-svg-dialog/Group%201000003833.svg"
+                        style="width: 28px; height: 28px; object-fit: cover" />
+                      <div style="
+                    width: 100px;
+                    height: 25px;
+                          display: flex;
+                          flex-direction: column;
+                          justify-content: start;
+                          align-items: flex-start;
+                          margin-left: 5px;
+                          gap: 8px;
+                        ">
+                        <div style="
+                      width: 150px;
+                      height: 11px;
+                      font-family: Genos;
+  font-size: 20px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                          ">
+                          <div style="
+                              width: 2px;
+                              height: 2px;
+                              border-radius: 45%;
+                              background: #00000066;
+                              "></div>
+  
+                          YekBun Team
+  
+                          <div style="
+                        width: 2px;
+                        height: 2px;
+                        border-radius: 45%;
+                        background: #00000066;
+                        "></div>
+                        </div>
+  
+                        <div style="
+                      width: 150px;
+                      height: 6px;
+                      font-family: Genos;
+  font-size: 14px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+                            color: #7e7e7e;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                          ">
+                          <div style="
+                         width: 2px;
+                         height: 2px;
+                         border-radius: 45%;
+                         background: #00000066;
+                         "></div>
+                          Time & Date
+                          <div style="
+                        width: 2px;
+                        height: 2px;
+                        border-radius: 45%;
+                        background: #00000066;
+                        "></div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <img src="assets/third-svg-dialog/Group%201000008317.svg"
+                      style="width: 25px; height: 27px; object-fit: cover; border: none;" class="img-thumbnail" />
+                  </div>
+  
+                  <div style="
+                height: 30px;
+                width: 30px;
+                background: #F2F2F2;
+  
+                      border-radius: 7px;
+                      display: flex; /* Utilisation de Flexbox */
+    align-items: center; /* Centrage vertical */
+    justify-content: center; /* Centrage horizontal */
+                    ">
+                    <img src="assets/third-svg-dialog/Group%201000006806.svg"
+                      style="width: 24px; height: 24px; object-fit: cover" />
+                  </div>
+                </div>
+  
+                <div style="
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: gray;
+                    width: 350px;
+                    height: 27px;
+                    text-align: left;
+                    background: #F7F7F7;
+                    padding: 7px;
+                    font-family: Genos;
+                    margin-top: 7px;
+                    margin-bottom: 7px;
+                    border-radius: 5px;
+                    display: flex; /* Utilisation de Flexbox */
+    align-items: center; /* Centrage vertical */
+    justify-content: left; /* Centrage horizontal */
+  
+                  ">
+                  Some Text wil be here when the User have
+                </div>
+  
+                <div style="position: relative;
+    width: 350px;
+    height: 256px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                  <img src="assets/third-svg-dialog/WhatsApp%20Bild%202023-09-22%20um%2015.17%201.svg"
+                    style="width: 350px; height: 256px; object-fit: cover; border-radius: 7px; padding: 0; display: block;" />
+  
+                  <div class="overlay" style="position: absolute;
+                width: 70px;
+                height: 32px;
+                  bottom: 10px;
+                  left: 10px;
+                  display: flex;
+                  align-items: center;
+                  border-radius: 5px;
+                  background: #1C274C99;
+  gap: 5px;">
+                    <!-- Image -->
+                    <img src="assets/second-svg-dialog/Vector.svg"
+                      style="width: 26px; height: 26px; margin: 5px; border-radius: 5px; object-fit: cover; color:#FFFFFF;" />
+                    <!-- Number on the right -->
+                    <div style=" 
+          font-size: 30px; 
+          font-weight: bold; 
+          font-family: Genos;
+          color: white; 
+          width: 30px; 
+          height: 30px; 
+          display: flex; 
+          justify-content: center; 
+          align-items: center;">
+                      5 <!-- Replace with dynamic number if needed -->
+                    </div>
+  
+                  </div>
+                  <div class="audio-icon" style="position: absolute;
+                  bottom: 10px;
+                  right: 10px;
+                  background: rgba(0, 0, 0, 0.6);
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  cursor: pointer;">
+                    <img src="assets/third-svg-dialog/Group 1000008129.svg"
+                      style="width: 20px; height: 20px; margin: 5px; border-radius: 5px; object-fit: cover; color:#FFFFFF;" />
+                  </div>
+                </div>
+  
+  
+                <div style="
+              height: 29px;
+              width: 350px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              background-color: #f8f9fa;
+              border-radius: 5px;
+              padding: 5px;
+              gap: 10px;
+              margin-top: 7px;
+            ">
+                  <div style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 60%;
+                height: 100%;
+              ">
+                    <div style="
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  height: 100%;
+                ">
+                      <img src="assets/third-svg-dialog/Eye%20Scan.svg"
+                        style="width: 100%; height: 100%; object-fit: cover" />
+                      <span style="font-weight: 400; font-family: Genos;
+  ">123</span>
+                    </div>
+  
+                    <div style="
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  height: 100%;
+                ">
+                      <img src="assets/third-svg-dialog/share.svg" style="width: 100%; height: 100%; object-fit: cover" />
+                      <span style="font-weight: 400; font-family: Genos;
+  ">123</span>
+                    </div>
+  
+                    <div style="
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  height: 100%;
+                ">
+                      <img src="assets/third-svg-dialog/Pen%202.svg"
+                        style="width: 100%; height: 100%; object-fit: cover" />
+                      <span style="font-weight: 400; font-family: Genos;
+  ">123</span>
+                    </div>
+  
+                    <div style="
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  height: 100%;
+                ">
+                      <img src="assets/third-svg-dialog/microphone-2.svg"
+                        style="width: 100%; height: 100%; object-fit: cover" />
+                      <span style="font-weight: 400; font-family: Genos;
+  ">123</span>
+                    </div>
+                  </div>
+  
+                  <div style="
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                height: 100%;
+              ">
+                    <img src="assets/third-svg-dialog/Group%201000002356.svg" style="width: 100%; height: 100%; object-fit: cover;
+  " />
+                    <img src="assets/third-svg-dialog/Group%201000002630.svg" style="width: 100%; height: 100%; object-fit: cover;;
+  " />
+                    <span style="font-weight: 400; font-family: Genos;
+  ">123</span>
+                  </div>
+                </div>
+  
+  
+                <div style="
+              width: 350px;
+              height: 30px;
+              display: flex;
+              background-color: white;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 10px;
+            ">
+                  <div style="
+                width: 120px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                height: 100%;
+              ">
+                    <div style="padding: 3px; 
+                  border-radius: 4px;
+                  width: 30px; 
+                  height: 30px; 
+                  background: #F2F2F2;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;">
+                      <img src="assets/third-svg-dialog/share.svg" style="width: 24px; height: 24px; object-fit: cover" />
+                    </div>
+  
+                    <div style="padding: 3px; 
+                  border-radius: 4px;
+                  width: 30px; 
+                  height: 30px; 
+                  background: #F2F2F2;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;">
+                      <img src="assets/third-svg-dialog/Group%201000002356.svg"
+                        style="width: 24px; height: 24px; object-fit: cover" />
+                    </div>
+                    <div style="padding: 3px; 
+                  border-radius: 4px;
+                  width: 30px; 
+                  height: 30px; 
+                  background: #F2F2F2;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;">
+                      <img src="assets/third-svg-dialog/microphone-2.svg"
+                        style="width: 24px; height: 24px; object-fit: cover" />
+                    </div>
+                  </div>
+  
+                  <div style="
+                background-color: #f8f9fa;
+                border-radius: 7px;
+                height: 30px;
+                width: auto;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 10px;
+                font-family: Genos;
+                padding: 5px;
+              ">
+                    <img src="assets/third-svg-dialog/Pen%202.svg" style="width: 24px; height: 24px" />
+  
+                    <span>add a comment here</span>
+                  </div>
+                </div>
+              </div>
+  
+  
+              <div style="
+              width: 360px;
+              height: 117px;
+              background-color: #fff;
+              margin-top: 10px;
+              border-radius: 5px;
+              padding: 5px;
+            ">
+                <div style="display: flex; align-items: center; gap: 5px; width: 130px; height: 18px;">
+                  <div style="
+                  width: 2px;
+                  height: 2px;
+                  border-radius: 50%;
+                  background-color: #4e4e4e;
+                "></div>
+                  <img src="assets/third-svg-dialog/share.svg" style="width: 18px; height: 18px; object-fit: cover" />
+                  <div style="
+                  width: 2px;
+                  height: 2px;
+                  border-radius: 50%;
+                  background-color: #4e4e4e;
+                "></div>
+                  <span style="font-family: Genos;
+                text-align: left;
+                font-size: 12px;
+  
+  ">Share Option</span>
+                  <div style="
+                  width: 2px;
+                  height: 2;
+                  border-radius: 50%;
+                  background-color: #4e4e4e;
+                "></div>
+                </div>
+  
+                <div style="
+    width: 347px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 5px;
+  ">
+    <button id="button1" class="toggle-button" onclick="toggleColor('button1')" style="
+      border: none;
+      background: #1CA2ED;
+      padding: 0;
+      border-radius: 7px;
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.2s ease;
+    ">
+      <img src="assets/Group%201000008315.svg" alt="All Users" style="width: 55px; height: 55px;" />
+      <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: white;">All Users</span>
+    </button>
+  
+    <button id="button2" class="toggle-button" onclick="toggleColor('button2')" style="
+      border: none;
+      background: #F2F2F2;
+      padding: 0;
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 7px;
+      transition: transform 0.2s ease;
+    ">
+      <img src="assets/Group%201000008317%20(1).svg" alt="Educated" style="width: 55px; height: 55px;" />
+      <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: gray;">Educated</span>
+    </button>
+  
+    <button id="button3" class="toggle-button" onclick="toggleColor('button3')" style="
+      border: none;
+      background: #F2F2F2;
+      padding: 0;
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 7px;
+      transition: transform 0.2s ease;
+    ">
+      <img src="assets/Group%201000008317%20(2).svg" alt="Cultivated" style="width: 55px; height: 55px;" />
+      <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: gray;">Cultivated</span>
+    </button>
+  
+    <button id="button4" class="toggle-button" onclick="toggleColor('button4')" style="
+      border: none;
+      background: #F2F2F2;
+      padding: 0;
+      cursor: pointer;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 7px;
+      transition: transform 0.2s ease;
+    ">
+      <img src="assets/Group%201000008308.svg" alt="Academic" style="width: 55px; height: 55px;" />
+      <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: gray;">Academic</span>
+    </button>
+  </div>
+  
+  
+  
+              </div>
+  
+              <div>
+                <div class="toggle-card">
+                  <!-- Toggle 1 -->
+                  <div class="toggle-item">
+                    <div class="form-switch">
+                      <input type="checkbox" class="form-check-input" id="comments" checked />
+                      <label for="comments" class="form-check-label"></label>
+                    </div>
+                    <span>Comments</span>
+                  </div>
+  
+                  <!-- Toggle 2 -->
+                  <div class="toggle-item">
+                    <div class="form-switch">
+                      <input type="checkbox" class="form-check-input" id="share" />
+                      <label for="share" class="form-check-label"></label>
+                    </div>
+                    <span>Share</span>
+                  </div>
+  
+                  <!-- Toggle 3 -->
+                  <div class="toggle-item">
+                    <div class="form-switch">
+                      <input type="checkbox" class="form-check-input" id="emoji" />
+                      <label for="emoji" class="form-check-label"></label>
+                    </div>
+                    <span>Emoji</span>
+                  </div>
+                </div>
+              </div>
+  
+  
+  
+  
+              <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 54px;
+                  height: 51px;
+                  margin-top: 50px;
+                  margin-left: 150px;
+                ">
+                <button style="outline: none; border: none; border-radius: 10px;background: #1BC469;
+              padding: 2px;
+  ">
+                  <img src="assets/third-svg-dialog/Path_2-2.svg" style="width: 29px; height: 26px;" />
+                  <span style="font-family: Genos; color: white;">share</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- *********** end greeting************** -->
 
     <div class="modal fade" id="modal5" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -3138,112 +3865,7 @@ gap: 5px;">
       </div>
     </div>
 
-    <div class="modal fade" id="modal14" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="height: 80vh; position: relative">
-          <div style="
-              position: absolute;
-              top: 0;
-              right: 5px;
-              width: 80px;
-              height: 80px;
-              border-radius: 5px;
-              z-index: 1000;
-            ">
-            <img src="assets/second-svg-dialog/Group%201000008474.svg" style="width: 100%; height: 100%" />
-          </div>
 
-          <div style="
-              position: absolute;
-              top: 5%;
-              right: -12%;
-              border-radius: 5px;
-              z-index: 1000;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 5px;
-            ">
-            <img src="assets/second-svg-dialog/Group%201000008246.svg" style="width: 100%; height: 100%" />
-          </div>
-
-          <div class="modal-body">
-            <!-- الصورة الرئيسية -->
-            <img id="mainImage" src="assets/second-svg-dialog/image%201425.svg" class="img-fluid" style="
-                position: absolute;
-                top: 0%;
-                left: 0%;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 10px;
-              " alt="Main View" />
-          </div>
-
-          <div class="modal-footer border-0 d-flex justify-content-center"
-            style="position: absolute; bottom: 0; left: 0; width: 100%">
-            <div style="
-                background-color: #deeff0ab;
-                border-radius: 10px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px;
-              ">
-              <textarea name="" id="" placeholder="Type Your Text.." class="form-control" style="
-                  background-color: #defdffe0;
-                  border-radius: 10px;
-                  font-weight: bold;
-                  outline: none;
-                  border: none;
-                  padding: 10px;
-                "></textarea>
-            </div>
-          </div>
-
-          <div style="
-              position: absolute;
-              bottom: -7%;
-              left: 0;
-              width: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 10px;
-            ">
-            <div id="backButtonToMainFrModel14" data-target="#modal4" style="
-                outline: none;
-                width: 50px;
-                height: 40px;
-                background-color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 10px;
-              ">
-              <img src="assets/first-svg-dialog/Group%201000008245.svg" />
-            </div>
-
-            <div id="systemButton" data-target="#modal9" style="
-                outline: none;
-                width: 100px;
-                height: 40px;
-                background-color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 10px;
-                gap: 5px;
-              ">
-              Create
-              <img src="assets/first-svg-dialog/Path_2-2.svg" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="modal fade" id="modal15" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -4079,359 +4701,7 @@ gap: 5px;">
       </div>
     </div>
 
-    <div class="modal fade" id="modal9" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-model-image container" style="height: 95vh; position: relative">
-          <div style="
-              position: absolute;
-              top: 5%;
-              right: -12%;
-              border-radius: 5px;
-              z-index: 1000;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 5px;
-            ">
-            <img src="assets/second-svg-dialog/Group%201000008246.svg" style="width: 100%; height: 100%" />
 
-            <img src="assets/second-svg-dialog/Group%201000008244.svg" style="width: 100%; height: 100%" />
-
-            <img id="backButtonToModal9" data-target="#modal14" src="assets/second-svg-dialog/Group%201000008247.svg"
-              style="width: 100%; height: 100%" />
-          </div>
-
-          <div class="modal-body" style="padding: 5px 0">
-            <div style="background-color: #fff; padding: 4px; border-radius: 5px">
-              <div style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin: 0;
-                ">
-                <div style="
-                    background-color: #f8f9fa;
-                    border-radius: 5px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 70%;
-                    height: 40px;
-                    padding: 5px;
-                  ">
-                  <div style="
-                      display: flex;
-                      align-items: start;
-                      align-items: center;
-                    ">
-                    <img src="assets/third-svg-dialog/Group%201000003833.svg" class="img-thumbnail"
-                      style="width: 40px; height: 35px; object-fit: cover" />
-
-                    <div style="
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: start;
-                        align-items: flex-start;
-                        margin-left: 5px;
-                      ">
-                      <div style="
-                          font-size: 16px;
-                          font-weight: bold;
-                          display: flex;
-                          align-items: center;
-                          gap: 5px;
-                          justify-content: space-between;
-                        ">
-                        <div style="
-                            width: 5px;
-                            height: 5px;
-                            border-radius: 50%;
-                            background-color: #4e4e4e;
-                          "></div>
-
-                        YekBun Team
-
-                        <div style="
-                            width: 5px;
-                            height: 5px;
-                            border-radius: 50%;
-                            background-color: #4e4e4e;
-                          "></div>
-                      </div>
-
-                      <div style="
-                          font-size: 12px;
-                          font-weight: 400;
-                          color: #7e7e7e;
-                          display: flex;
-                          align-items: center;
-                          gap: 5px;
-                          justify-content: space-between;
-                        ">
-                        <div style="
-                            width: 5px;
-                            height: 5px;
-                            border-radius: 50%;
-                            background-color: #7e7e7e;
-                          "></div>
-                        Time & Date
-                      </div>
-                    </div>
-                  </div>
-
-                  <img src="assets/third-svg-dialog/Group%201000008319.svg"
-                    style="width: 40px; height: 35px; object-fit: cover" class="img-thumbnail" />
-                </div>
-
-                <div style="
-                    background-color: #f8f9fa;
-                    padding: 5px;
-                    border-radius: 10px;
-                  ">
-                  <img src="assets/third-svg-dialog/Group%201000006806.svg" class="img-thumbnail"
-                    style="width: 40px; height: 35px; object-fit: cover" />
-                </div>
-              </div>
-
-              <div style="
-                  font-size: 14px;
-                  font-weight: 400;
-                  color: gray;
-                  width: 100%;
-                  text-align: left;
-                  background-color: #f8f9fa;
-                  padding: 7px;
-                  margin-top: 7px;
-                  border-radius: 5px;
-                ">
-                Some Text wil be here when the User have
-              </div>
-
-              <div style="width: 100%; height: 330px">
-                <img src="assets/third-svg-dialog/Group%201000008097.svg" class="img-thumbnail"
-                  style="width: 100%; height: 100%; object-fit: cover" />
-              </div>
-
-              <div style="
-                  height: 35px;
-                  width: 100%;
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  background-color: #f8f9fa;
-                  border-radius: 5px;
-                  padding: 5px;
-                ">
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 60%;
-                    height: 100%;
-                  ">
-                  <div style="
-                      display: flex;
-                      align-items: center;
-                      gap: 3px;
-                      height: 100%;
-                    ">
-                    <img src="assets/third-svg-dialog/Eye%20Scan.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                    <span style="font-weight: 400">123</span>
-                  </div>
-
-                  <div style="
-                      display: flex;
-                      align-items: center;
-                      gap: 3px;
-                      height: 100%;
-                    ">
-                    <img src="assets/third-svg-dialog/Group%201000007554.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                    <span style="font-weight: 400">123</span>
-                  </div>
-
-                  <div style="
-                      display: flex;
-                      align-items: center;
-                      gap: 3px;
-                      height: 100%;
-                    ">
-                    <img src="assets/third-svg-dialog/Pen%202.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                    <span style="font-weight: 400">123</span>
-                  </div>
-
-                  <div style="
-                      display: flex;
-                      align-items: center;
-                      gap: 3px;
-                      height: 100%;
-                    ">
-                    <img src="assets/third-svg-dialog/Group%201000008128.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                    <span style="font-weight: 400">123</span>
-                  </div>
-                </div>
-
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    height: 100%;
-                  ">
-                  <img src="assets/third-svg-dialog/Frame%201000007366.svg" class="img-thumbnail"
-                    style="width: 100%; height: 100%; object-fit: cover" />
-                  <span>123</span>
-                </div>
-              </div>
-
-              <div style="
-                  width: 100%;
-                  height: 40px;
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-top: 5px;
-                ">
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    height: 100%;
-                  ">
-                  <div style="padding: 3px; border-radius: 4px; height: 100%">
-                    <img src="assets/third-svg-dialog/Group%201000007554.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                  </div>
-
-                  <div style="padding: 3px; border-radius: 4px; height: 100%">
-                    <img src="assets/third-svg-dialog/Group%201000008127.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                  </div>
-
-                  <div style="padding: 3px; border-radius: 4px; height: 100%">
-                    <img src="assets/third-svg-dialog/Group%201000008128.svg" class="img-thumbnail"
-                      style="width: 100%; height: 100%; object-fit: cover" />
-                  </div>
-                </div>
-
-                <div style="
-                    background-color: #f8f9fa;
-                    padding: 0 5px 0 0;
-                    text-transform: capitalize;
-                    font-weight: 400;
-                    border-radius: 7px;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                  ">
-                  <img src="assets/third-svg-dialog/Pen%202.svg" class="img-thumbnail"
-                    style="width: 60px; height: 100%" />
-
-                  <span>add a comment here</span>
-                </div>
-              </div>
-            </div>
-
-            <div style="
-                width: 100%;
-                background-color: #fff;
-                margin-top: 5px;
-                border-radius: 5px;
-                padding: 5px;
-              ">
-              <div style="display: flex; align-items: center; gap: 5px">
-                <div style="
-                    width: 5px;
-                    height: 5px;
-                    border-radius: 50%;
-                    background-color: #4e4e4e;
-                  "></div>
-                <img src="assets/third-svg-dialog/Group%201000007554.svg" class="img-thumbnail"
-                  style="width: 40px; height: 40px; object-fit: cover" />
-                <div style="
-                    width: 5px;
-                    height: 5px;
-                    border-radius: 50%;
-                    background-color: #4e4e4e;
-                  "></div>
-                <span style="font-weight: 400">Share Option</span>
-                <div style="
-                    width: 5px;
-                    height: 5px;
-                    border-radius: 50%;
-                    background-color: #4e4e4e;
-                  "></div>
-              </div>
-
-              <div style="
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-around;
-                  gap: 5px;
-                  margin: 5px;
-                ">
-                <img src="assets/third-svg-dialog/Group%201000008327.svg" class="img-thumbnail"
-                  style="width: 100%; height: 100%; object-fit: cover" />
-
-                <img src="assets/third-svg-dialog/Group%201000008317.svg" class="img-thumbnail"
-                  style="width: 100%; height: 100%; object-fit: cover" />
-
-                <img src="assets/third-svg-dialog/Group%201000008318.svg" class="img-thumbnail"
-                  style="width: 100%; height: 100%; object-fit: cover" />
-
-                <img src="assets/third-svg-dialog/Group%201000008319.svg" class="img-thumbnail"
-                  style="width: 100%; height: 100%; object-fit: cover" />
-              </div>
-            </div>
-
-            <div class="mt-1">
-              <div class="toggle-card">
-                <!-- Toggle 1 -->
-                <div class="toggle-item">
-                  <div class="form-switch">
-                    <input type="radio" class="form-check-input" name="toggleOptions" id="comments" checked />
-                    <label for="comments" class="form-check-label"></label>
-                  </div>
-                  <span>Comments</span>
-                </div>
-                <!-- Toggle 2 -->
-                <div class="toggle-item">
-                  <div class="form-switch">
-                    <input type="radio" class="form-check-input" name="toggleOptions" id="share" />
-                    <label for="share" class="form-check-label"></label>
-                  </div>
-                  <span>Share</span>
-                </div>
-                <!-- Toggle 3 -->
-                <div class="toggle-item">
-                  <div class="form-switch">
-                    <input type="radio" class="form-check-input" name="toggleOptions" id="emoji" />
-                    <label for="emoji" class="form-check-label"></label>
-                  </div>
-                  <span>Emoji</span>
-                </div>
-              </div>
-            </div>
-
-            <div style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                margin: 10px;
-              ">
-              <button style="outline: none; border: none; border-radius: 10px">
-                <img src="assets/third-svg-dialog/Frame%201000007255.svg" style="width: 100%; height: 100%" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
