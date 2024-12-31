@@ -20,6 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function toggleColor(buttonId) {
+  const buttons = document.querySelectorAll('.toggle-button');
+  
+  // Reset all buttons to default state
+  buttons.forEach(button => {
+    button.style.background = '#F2F2F2';
+    button.querySelector('span').style.color = 'gray';
+  });
+  
+  // Toggle the clicked button
+  const clickedButton = document.getElementById(buttonId);
+  clickedButton.style.background = '#1CA2ED';
+  clickedButton.querySelector('span').style.color = 'white';
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("createButton");

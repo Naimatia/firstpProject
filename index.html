@@ -35,20 +35,23 @@
         <!-- Header Section -->
         <div class="modal-header" style="height: 314px; 
         background-color: white;
-         border-radius: 10px 10px 0 0;
-         display: flex; 
-         flex-direction: column;">
+        border-radius: 10px 10px 0 0;
+        display: flex; 
+        flex-direction: column; 
+        justify-content: flex-start;">
 
-<div style="margin-left: -200px; width: 284px; height: 65px; font-family: Genos; 
-font-weight: 600px;">
-            <h5 class="modal-title" id="popupModalLabel">Welcome to:</h5>
-            <h6>YekBun Sharing section</h6>
-          </div>
-        
-          <div class=" text-center mt-3">
-            <img src="assets/g10.svg" alt="Illustration" class="img-fluid" />
-          </div>
-        </div>
+  <!-- Text aligned to the left -->
+  <div style="text-align: left;">
+    <h5 class="modal-title" id="popupModalLabel">Welcome to:</h5>
+    <h6>YekBun Sharing section</h6>
+  </div>
+
+  <!-- Image remains centered -->
+  <div class="text-center mt-3">
+    <img src="assets/g10.svg" alt="Illustration" class="img-fluid" />
+  </div>
+</div>
+
 
         <!-- Modal Body -->
         <div class="modal-body">
@@ -191,31 +194,39 @@ font-weight: 600px;">
             </div>
 
             <div style="
-          width: 333px;
-          height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: start;
-          gap: 10px; /* Réduit l'écart entre l'image et le texte */
-          background-color: #fff;
-          margin-top: 230px;
-          border-radius: 10px;
-          padding: 5px; /* Ajoute un peu de padding pour un espacement interne */
-        ">
-              <!-- Image à gauche -->
-              <div style="display: flex; align-items: center;">
-                <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
-                  class="img-fluid" style="height: 40px; width: 41px; cursor: pointer" />
-                <input type="file" id="imageUploader2" accept="image/*" style="display: none" />
-              </div>
-
-              <!-- Texte à droite -->
-              <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px; font-family: Genos;">
-                <h4 style="margin: 0;">Another Selection</h4>
-                <h6 style="margin: 0;">File Size H 812 - W 350</h6>
-                <p style="margin: 0;">MP4-JPG Or PNG - Max 5 Image</p>
-              </div>
+            width: 333px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrage horizontal */
+            gap: 10px; /* Réduit l'écart entre l'image et le texte */
+            background-color: #fff;
+            margin-top: 230px;
+            border-radius: 10px;
+            padding: 5px; /* Ajoute un peu de padding pour un espacement interne */
+          ">
+            <!-- Image à gauche -->
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
+                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;" />
+              <input type="file" id="imageUploader2" accept="image/*" style="display: none;" />
             </div>
+          
+            <!-- Texte à droite -->
+            <div style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center; /* Centrage vertical */
+              gap: 6px;
+              font-family: Genos;
+            ">
+              <h4 style="margin: 0; text-align: center;">Another Selection</h4>
+              <h6 style="margin: 0; text-align: center;">File Size H 812 - W 350</h6>
+              <p style="margin: 0; text-align: center;">MP4-JPG Or PNG - Max 5 Image</p>
+            </div>
+          </div>
+          
 
 
             <div style="
@@ -1437,7 +1448,7 @@ height: 812px; padding: 0px;border-radius: 10px;">
                     width: 100px;
                     height: 11px;
                     font-family: Genos;
-font-size: 12px;
+font-size: 10px;
 line-height: 16px;
 text-underline-position: from-font;
 text-decoration-skip-ink: none;
@@ -1466,7 +1477,7 @@ text-decoration-skip-ink: none;
                     width: 57px;
                     height: 6px;
                     font-family: Genos;
-font-size: 8px;
+font-size: 6px;
 line-height: 10px;
 text-align: left;
 text-underline-position: from-font;
@@ -1779,94 +1790,91 @@ gap: 5px;">
               </div>
 
               <div style="
-            width: 347px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            gap: 10px;
-            margin-top: 5px;
-          ">
-                <button style="
-              border: none;
-              background: transparent;
-              padding: 0;
-              border-radius: 7px;
-              cursor: pointer;
-              width: 80px;
-              height: 80px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              transition: transform 0.2s ease;
-              background: #1CA2ED;
-              ">
-                  <img src="assets/Group%201000008315.svg" alt="All Users" style="width: 55px; height: 55px;" />
-                  <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: white;">All Users</span>
-                </button>
+  width: 347px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 5px;
+">
+  <button id="button1" class="toggle-button" onclick="toggleColor('button1')" style="
+    border: none;
+    background: #1CA2ED;
+    padding: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease;
+  ">
+    <img src="assets/Group%201000008315.svg" alt="All Users" style="width: 55px; height: 55px;" />
+    <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: white;">All Users</span>
+  </button>
 
-                <button style="
-              border: none;
-              background: transparent;
-              padding: 0;
-              cursor: pointer;
-              width: 80px;
-              height: 80px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              transition: transform 0.2s ease;
-              background: #F2F2F2;
-              border-radius: 7px;
-            " >
-                  <img src="assets/Group%201000008317%20(1).svg" alt="Educated" style="width: 55px; height: 55px;" />
-                  <span style="font-size: 12px; margin-top: 5px;color: gray; font-family: Genos;">Educated</span>
-                </button>
+  <button id="button2" class="toggle-button" onclick="toggleColor('button2')" style="
+    border: none;
+    background: #F2F2F2;
+    padding: 0;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 7px;
+    transition: transform 0.2s ease;
+  ">
+    <img src="assets/Group%201000008317%20(1).svg" alt="Educated" style="width: 55px; height: 55px;" />
+    <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: gray;">Educated</span>
+  </button>
 
-                <button style="
-              border: none;
-              background: transparent;
-              padding: 0;
-              cursor: pointer;
-              width: 80px;
-              height: 80px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              border-radius: 7px;
-              background: #F2F2F2;
-              transition: transform 0.2s ease;
-            ">
-                  <img src="assets/Group%201000008317%20(2).svg" alt="Cultivated" style="width: 55px; height: 55px;" />
-                  <span style="font-size: 12px; margin-top: 5px;color: gray; font-family: Genos;">Cultivated</span>
-                </button>
+  <button id="button3" class="toggle-button" onclick="toggleColor('button3')" style="
+    border: none;
+    background: #F2F2F2;
+    padding: 0;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 7px;
+    transition: transform 0.2s ease;
+  ">
+    <img src="assets/Group%201000008317%20(2).svg" alt="Cultivated" style="width: 55px; height: 55px;" />
+    <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: gray;">Cultivated</span>
+  </button>
 
-                <button style="
-              border: none;
-              background: transparent;
-              padding: 0;
-              cursor: pointer;
-              width: 80px;
-              height: 80px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              border-radius: 7px;
-              background: #F2F2F2;
-              transition: transform 0.2s ease;
-            ">
-                  <img src="assets/Group%201000008308.svg" alt="Academic" style="width: 55px; height: 55px;" />
-                  <span style="font-size: 12px; margin-top: 5px;color: gray; font-family: Genos;">Academic</span>
-                </button>
-              </div>
+  <button id="button4" class="toggle-button" onclick="toggleColor('button4')" style="
+    border: none;
+    background: #F2F2F2;
+    padding: 0;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 7px;
+    transition: transform 0.2s ease;
+  ">
+    <img src="assets/Group%201000008308.svg" alt="Academic" style="width: 55px; height: 55px;" />
+    <span style="font-size: 12px; margin-top: 5px; font-family: Genos; color: gray;">Academic</span>
+  </button>
+</div>
+
 
 
             </div>
@@ -2370,6 +2378,7 @@ gap: 5px;">
                 padding: 5px;
               ">
               <div style="display: flex; align-items: center; gap: 5px">
+                
                 <div style="
                     width: 5px;
                     height: 5px;
