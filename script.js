@@ -1462,3 +1462,16 @@ function changeMainImage(src) {
 }
 
 
+
+/*
+window.onload = function () {
+  const modal = new bootstrap.Modal(document.getElementById('modal1'));
+  modal.show();
+  const modal17 = new bootstrap.Modal(document.getElementById('modal'));
+  modal17.show();
+
+};
+
+*/
+
+
