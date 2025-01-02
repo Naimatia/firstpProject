@@ -891,8 +891,9 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButtonModel6");
   const previewContainerWrapper = document.getElementById("image-preview-container");
-  const fileInputs = document.querySelectorAll(".fileInput6");
-  const MAX_IMAGES = 5;
+  const previewContainerWrapperModel6 = document.getElementById("previewContainerWrapperModel6");
+  const fileInput = document.querySelector(".fileInput6");
+  const MAX_IMAGES = 1;
   let imageCount = 0;
 
   // Function to validate the file type and size
@@ -907,7 +908,6 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.onload = (e) => {
       const img = new Image();
       img.onload = () => {
-        // Check if image dimensions are within the allowed size
         if (img.width > 350 || img.height > 812) {
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
@@ -923,7 +923,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const resizedDataUrl = canvas.toDataURL(file.type);
           callback(true, resizedDataUrl);
         } else {
-          callback(true, e.target.result); // No resizing needed
+          callback(true, e.target.result);
         }
       };
       img.src = e.target.result;
@@ -936,34 +936,49 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   }
 
-  // Attach file input handler to each file input field
-  fileInputs.forEach((fileInput, index) => {
-    fileInput.addEventListener("change", (event) => {
-      const files = event.target.files;
-      
-      // Check if the number of selected files exceeds the maximum allowed images
-      if (imageCount + files.length <= MAX_IMAGES) {
-        Array.from(files).forEach((file) => {
-          validateFile(file, (isValid, fileData) => {
-            if (isValid) {
-              const previewImage = document.createElement("img");
-              previewImage.src = fileData;
-              previewImage.alt = "Image Preview";
-              previewImage.style.width = "50px";
-              previewImage.style.height = "50px";
-              previewImage.style.borderRadius = "10px";
-              previewContainerWrapper.appendChild(previewImage);
+  fileInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+    if (imageCount + files.length <= MAX_IMAGES) {
+      Array.from(files).forEach((file) => {
+        validateFile(file, (isValid, fileData) => {
+          if (isValid) {
+            console.log("Valid image file loaded, appending it to the container.");
 
-              imageCount++; // Increment the count of uploaded images
-            }
-          });
+            const previewImage = document.createElement("img");
+            previewImage.src = fileData;
+            previewImage.alt = "Image Preview";
+            previewImage.style.width = "100%";
+            previewImage.style.height = "100%";
+            previewImage.style.objectFit = "fill"; // Ensure the image fills the container
+            previewImage.style.position = "relative"; // Proper positioning
+            previewImage.style.borderRadius = "10px"; // Proper positioning
+            previewImage.style.objectPosition = "center"; // Proper positioning
+
+            // Hide the button and file input, but keep the preview container visible
+            addImageButton.style.display = "none";
+            fileInput.style.display = "none";
+            descriptionTextContainer.style.display = "none";
+            previewContainerWrapperModel6.style.border = "none";
+            
+            // Append the image to the preview container
+            previewContainerWrapper.appendChild(previewImage);
+            imageCount++;
+
+            console.log("Image successfully appended to the container.");
+          }
         });
-      } else {
-        alert("You can only upload a maximum of 5 images.");
-      }
-    });
+      });
+    } else {
+      alert("You can only upload a maximum of 1 image.");
+    }
   });
 });
+
+
+
+
+
+
 
 
 /*
