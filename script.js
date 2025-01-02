@@ -975,7 +975,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+ // Attendre que le DOM soit chargé
+ document.addEventListener("DOMContentLoaded", function () {
+  const fileInput = document.getElementById("fileUpload1");
+  const previewImage = document.getElementById("previewImage");
 
+  fileInput.addEventListener("change", function () {
+    const file = fileInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        previewImage.src = event.target.result;
+        previewImage.style.display = "block"; // Afficher l'image
+      };
+
+      reader.readAsDataURL(file); // Lire le fichier comme une Data URL
+    } else {
+      previewImage.src = ""; // Réinitialiser l'image
+      previewImage.style.display = "none"; // Cacher l'image
+    }
+  });
+});
 
 
 
@@ -1563,7 +1584,24 @@ window.onload = function () {
 
 
 };
-
 */
+
+function updateLabelWithImage(event, containerId) {
+  const fileInput = event.target;
+  const file = fileInput.files[0];
+  const iconContainer = document.getElementById(containerId);
+
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      iconContainer.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px;" />`;
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    iconContainer.innerHTML = `<img src="/assets/Gallery%20Add.svg" alt="Icon" />`;
+  }
+}
 
 

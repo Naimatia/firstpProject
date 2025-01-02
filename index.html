@@ -2455,28 +2455,7 @@ gap: 5px;">
       <div class="modal-content bg-model-image container" style="background: #000000BF;width: 375px;
 height: 812px; padding: 0px;border-radius: 10px;">
 
-        <div style="
-              position: absolute;
-              top: 0%;
-              width: 50px;
-              height: 168;
-              right: -17%;
-              border-radius: 5px;
-              z-index: 1000;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 24px;
-            ">
-          <img src="assets/second-svg-dialog/Group%201000008246.svg" style="width: 50px; height: 50px" />
-
-          <img src="assets/second-svg-dialog/Group%201000008244.svg" style="width: 50px; height: 50px" />
-
-          <img id="backButtonToMainFrModel17" data-target="#modal6" src="assets/second-svg-dialog/Group%201000008247.svg"
-            style="width: 50px; height: 50px" />
-        </div>
-
+        
         <div class="modal-body" style="
         width: 360px;
         height: 400px;
@@ -3039,14 +3018,63 @@ gap: 5px;">
             </button>
           </div>
         </div>
+        <div style="
+                position: absolute;
+                bottom: -10%;
+                left: 100px;
+                width: 202px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+              ">
+            <div id="createSOSButton" data-target="#popupModal" style="
+                  outline: none;
+                  width: 50px;
+                  height: 40px;
+                  background-color: #fff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 10px;
+                ">
+              <img src="assets/first-svg-dialog/Group%201000008245.svg" />
+            </div>
+
+           
+          </div>
+
       </div>
     </div>
   </div>     
   
   <div class="modal fade" id="modal6" tabindex="-1" aria-hidden="true " aria-labelledby="Modlal6">
     <div class="modal-dialog modal-dialog-centered" style="position: relative">
+      
       <div class="modal-content container"
         style="background-color: #e0e0e0; width: 375px;height: 812px; padding: 0; font-family: Genos;border-radius: 10px;">
+        
+        <div style="
+        width: 50px;
+        height: 130px;
+              position: absolute;
+              top: 1%;
+              right: -17%;
+              border-radius: 5px;
+              z-index: 1000;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 5px;
+            ">
+
+          <img id="deleteButton" src="assets/second-svg-dialog/Group%201000008246.svg"
+            style="width: 100%; height: 100%; cursor: pointer;" />
+
+          <img id="backButtonToMainFrModel6" data-target="#modal17" src="assets/second-svg-dialog/Group%201000008249.svg"
+            style="width: 100%; height: 100%; cursor: pointer;" />
+        </div>
         <div class="modal-body" style="width:360px ;  height: 694px; margin: 5px; padding: 0;">
           <div style="
             width: 360px;
@@ -3151,9 +3179,6 @@ gap: 5px;">
          </div>
        </div>
      </div>
-     
-        
-        
 
           <form>
 
@@ -3255,31 +3280,49 @@ gap: 5px;">
 
                 <span style="margin-left: 250px;padding: 0; height: 20px;">Max. 10 Letters</span>
 
-                <div class="reaction-item" style="background-color: white;border: none; margin: 0; padding: 0;">
-                  <div class="reaction-icon">
+                <div class="reaction-item" style="background-color: white;border: none;margin: 0;padding: 0;">
+                  <div style="width: 33px; height: 33px;">
                     
-                    <input type="file" id="fileUpload1" />
-                  </div>
+                    <label class="custom-file-container">
+                      <input type="file" accept="image/*" onchange="updateLabelWithImage(event, 'iconContainer1')">
+                      <div class="icon-container" id="iconContainer1" style="width: 24px; height: 24px;">
+                        <img id="defaultIcon1" src="/assets/Gallery%20Add.svg" alt="Icon" />
+                      </div>
+                    </label>
+                 
+                    
+                                     </div>
                   <input type="text" class="form-control" style="background-color: #e0e0e0"
                     placeholder="Type the amount" />
                 </div>
                 <span style="margin-left: 250px;padding: 0; height: 20px;">Max. 10 Letters</span>
 
                 <div class="reaction-item" style="background-color: white;border: none;margin: 0;padding: 0;">
-                  <div class="reaction-icon">
+                  <div style="width: 33px; height: 33px;">
                     
-                    <input type="file" id="fileUpload1" />
-                  </div>
+                   
+                    <label class="custom-file-container">
+                      <input type="file" accept="image/*" onchange="updateLabelWithImage(event, 'iconContainer2')">
+                      <div class="icon-container" id="iconContainer2" style="width: 24px; height: 24px;">
+                        <img id="defaultIcon2" src="/assets/Gallery%20Add.svg" alt="Icon" />
+                      </div>
+                    </label>             </div>
                   <input type="text" class="form-control" style="background-color: #e0e0e0"
                     placeholder="Type the amount" />
                 </div>
                 <span style="margin-left: 250px;padding: 0; height: 20px;">Max. 10 Letters</span>
 
-                <div class="reaction-item" style="background-color: white;border: none; margin: 0;padding: 0;">
-                  <div class="reaction-icon">
+                <div class="reaction-item" style="background-color: white;border: none;margin: 0;padding: 0;">
+                  <div style="width: 33px; height: 33px;">
                     
-                    <input type="file" id="fileUpload1" />
-                  </div>
+                    
+                    <label class="custom-file-container">
+                      <input type="file" accept="image/*" onchange="updateLabelWithImage(event, 'iconContainer3')">
+                      <div class="icon-container" id="iconContainer3" style="width: 24px; height: 24px;">
+                        <img id="defaultIcon3" src="/assets/Gallery%20Add.svg" alt="Icon" />
+                      </div>
+                    </label>
+                                  </div>
                   <input type="text" class="form-control" style="background-color: #e0e0e0"
                     placeholder="Type the amount" />
                 </div>
@@ -3308,21 +3351,7 @@ gap: 5px;">
               <img src="assets/first-svg-dialog/Group%201000008245.svg" />
             </div>
 
-            <div id="backButtonToMainFrModel6" data-target="#modal17" style="
-                  outline: none;
-                  width: 100px;
-                  height: 40px;
-                  background-color: #fff;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  border-radius: 10px;
-                  gap: 5px;
-                  font-family: Genos;
-                ">
-              Create
-              <img src="assets/first-svg-dialog/Path_2-2.svg" />
-            </div>
+           
           </div>
 
 
@@ -5086,6 +5115,9 @@ gap: 5px;">
         todayHighlight: true,
       });
     });
+
+
+   
   </script>
 
 

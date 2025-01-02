@@ -212,3 +212,30 @@ textarea::-webkit-scrollbar-button {
   color: #212529;
   margin-top: 5px;
 }
+
+.custom-file-container {
+  width: 33px;
+  height: 33px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  position: relative;
+}
+.custom-file-container:hover {
+  background-color: #e9e9e9;
+}
+.custom-file-container input[type="file"] {
+  display: none;
+}
+.custom-file-container .icon-container {
+  text-align: center;
+}
+.custom-file-container .icon-container img {
+  width: 24px;
+  height: 24px;
+}
+
