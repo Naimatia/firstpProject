@@ -1007,6 +1007,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fileInput = document.querySelector(".fileInput7");
   const deleteButtonMp3 = document.getElementById("deleteButtonMp3");
   const previewContainerMp3 = document.getElementById("previewContainerMp3")
+  const Mp3upload = document.getElementById("Mp3upload")
   const durationSpan = document.getElementById("Duration"); // Utilise l'élément existant pour la durée
   const MAX_DURATION = 300; // Maximum duration in seconds
   const allowedTypes = ["audio/mpeg", "audio/wav"];
@@ -1051,6 +1052,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the upload area
         mp3Input.style.display = "none";
         previewContainerMp3.style.border = "none";
+        Mp3upload.style.display = "Block"
         
 
 
@@ -1069,6 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mp3Input.style.top = "0px"; // Réinitialise la position verticale
         mp3Input.style.bottom = "0px"; // Réinitialise la position horizontale
     previewContainerMp3.style.border = "2px dashed gray"; // Restore the border
+    Mp3upload.style.display = "none"
 
 
     // Reset duration span
