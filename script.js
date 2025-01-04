@@ -893,8 +893,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewContainerWrapper = document.getElementById("image-preview-container");
   const previewContainerWrapperModel6 = document.getElementById("previewContainerWrapperModel6");
   const fileInput = document.querySelector(".fileInput6");
+  const deleteButton = document.getElementById("deleteButton1");
   const MAX_IMAGES = 1;
   let imageCount = 0;
+
+  
 
   // Function to validate the file type and size
   function validateFile(file, callback) {
@@ -936,6 +939,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   }
 
+  // Handle file input changes
   fileInput.addEventListener("change", (event) => {
     const files = event.target.files;
     if (imageCount + files.length <= MAX_IMAGES) {
@@ -949,21 +953,19 @@ document.addEventListener("DOMContentLoaded", () => {
             previewImage.alt = "Image Preview";
             previewImage.style.width = "100%";
             previewImage.style.height = "100%";
-            previewImage.style.objectFit = "fill"; // Ensure the image fills the container
-            previewImage.style.position = "relative"; // Proper positioning
-            previewImage.style.borderRadius = "10px"; // Proper positioning
-            previewImage.style.objectPosition = "center"; // Proper positioning
+            previewImage.style.objectFit = "fill";
+            previewImage.style.borderRadius = "10px";
 
-            // Hide the button and file input, but keep the preview container visible
-            addImageButton.style.display = "none";
-            fileInput.style.display = "none";
-            descriptionTextContainer.style.display = "none";
-            previewContainerWrapperModel6.style.border = "none";
-            
             // Append the image to the preview container
             previewContainerWrapper.appendChild(previewImage);
-            imageCount++;
 
+            // Hide the upload interface
+            addImageButton.style.display = "none";
+            fileInput.style.display = "none";
+            previewContainerWrapperModel6.style.border = "none";
+
+
+            imageCount++;
             console.log("Image successfully appended to the container.");
           }
         });
@@ -972,31 +974,117 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("You can only upload a maximum of 1 image.");
     }
   });
+
+  // Handle image deletion
+  deleteButton.addEventListener("click", () => {
+    console.log("Deleting the image...");
+
+    // Remove the preview image
+    while (previewContainerWrapper.firstChild) {
+      previewContainerWrapper.removeChild(previewContainerWrapper.firstChild);
+    }
+
+    // Reset image count
+    imageCount = 0;
+
+    // Reshow the upload interface
+    addImageButton.style.display = "block";
+    fileInput.style.display = "block";
+    previewContainerWrapperModel6.style.border = "2px dashed gray"; // Restore the border
+
+
+    console.log("Image deleted and upload interface restored.");
+  });
 });
+
+
+
 
 
  // Attendre que le DOM soit chargé
- document.addEventListener("DOMContentLoaded", function () {
-  const fileInput = document.getElementById("fileUpload1");
-  const previewImage = document.getElementById("previewImage");
+ document.addEventListener("DOMContentLoaded", () => {
+  const mp3Input = document.getElementById("Mp3Input");
+  const fileInput = document.querySelector(".fileInput7");
+  const deleteButtonMp3 = document.getElementById("deleteButtonMp3");
+  const previewContainerMp3 = document.getElementById("previewContainerMp3")
+  const durationSpan = document.getElementById("Duration"); // Utilise l'élément existant pour la durée
+  const MAX_DURATION = 300; // Maximum duration in seconds
+  const allowedTypes = ["audio/mpeg", "audio/wav"];
 
-  fileInput.addEventListener("change", function () {
-    const file = fileInput.files[0];
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = function (event) {
-        previewImage.src = event.target.result;
-        previewImage.style.display = "block"; // Afficher l'image
-      };
-
-      reader.readAsDataURL(file); // Lire le fichier comme une Data URL
-    } else {
-      previewImage.src = ""; // Réinitialiser l'image
-      previewImage.style.display = "none"; // Cacher l'image
+  // Validate file type and size
+  function validateFile(file, callback) {
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only MP3 or WAV files are allowed.");
+      return callback(false, null);
     }
+
+    const audio = new Audio();
+    audio.src = URL.createObjectURL(file);
+
+    audio.addEventListener("loadedmetadata", () => {
+      if (audio.duration > MAX_DURATION) {
+        alert(`The file exceeds the maximum allowed duration of ${MAX_DURATION} seconds.`);
+        return callback(false, null);
+      }
+
+      callback(true, { file, duration: audio.duration });
+    });
+
+    audio.onerror = () => {
+      alert("Invalid audio file.");
+      callback(false, null);
+    };
+  }
+
+  // Handle file input change
+  fileInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+
+    if (files.length > 1) {
+      alert("You can only upload one file at a time.");
+      return;
+    }
+
+    const file = files[0];
+    validateFile(file, (isValid, fileData) => {
+      if (isValid) {
+        // Hide the upload area
+        mp3Input.style.display = "none";
+        previewContainerMp3.style.border = "none";
+        
+
+
+        // Update the existing duration span
+        durationSpan.textContent = formatDuration(fileData.duration);
+
+        console.log("File uploaded:", file.name);
+      }
+    });
   });
+
+  // Delete audio file and reset upload area
+  deleteButtonMp3.addEventListener("click", () => {
+    fileInput.value = ""; // Reset file input
+    mp3Input.style.display = "block"; // Reshow the upload area
+    mp3Input.style.top = "0px"; // Réinitialise la position verticale
+        mp3Input.style.bottom = "0px"; // Réinitialise la position horizontale
+    previewContainerMp3.style.border = "2px dashed gray"; // Restore the border
+
+
+    // Reset duration span
+    durationSpan.textContent = "00:00";
+
+    console.log("Audio file deleted.");
+  });
+
+  // Format duration to "MM:SS"
+  function formatDuration(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+  }
 });
+
 
 
 
@@ -1585,6 +1673,7 @@ window.onload = function () {
 
 };
 */
+
 
 function updateLabelWithImage(event, containerId) {
   const fileInput = event.target;
