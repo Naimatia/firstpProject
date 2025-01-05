@@ -1008,7 +1008,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewContainerMp3 = document.getElementById("previewContainerMp3");
   const Mp3upload = document.getElementById("Mp3upload");
   const playButton = document.getElementById("play");
-  const durationSpan = document.getElementById("Duration"); // Utilise l'élément existant pour la durée
+  const durationSpan = document.getElementById("Duration"); // For the original modal
+  const modal17Duration = document.getElementById("DurationModal7"); // Target duration in modal 17
+  const playIconModal17 = document.querySelector(".overlay img[src='assets/Player%20Play.svg']");
   const MAX_DURATION = 300; // Maximum duration in seconds
   const allowedTypes = ["audio/mpeg", "audio/wav"];
   let audioElement = null; // Variable to store the audio element
@@ -1055,62 +1057,42 @@ document.addEventListener("DOMContentLoaded", () => {
         previewContainerMp3.style.border = "none";
         Mp3upload.style.display = "block";
 
-        // Update the existing duration span
+        // Update the duration spans
         durationSpan.textContent = formatDuration(fileData.duration);
+        modal17Duration.textContent = formatDuration(fileData.duration);
 
         // Create an audio element and append it
         if (!audioElement) {
-          audioElement = new Audio(URL.createObjectURL(fileData.file)); // Use the correct URL
-          
-          // Event listener for real-time duration update
+          audioElement = new Audio(URL.createObjectURL(fileData.file));
           audioElement.addEventListener("timeupdate", () => {
-            if (audioElement) {
-              const currentTime = audioElement.currentTime;
-              durationSpan.textContent = formatDuration(currentTime);
-            }
+            const currentTime = audioElement.currentTime;
+            durationSpan.textContent = formatDuration(currentTime);
+            modal17Duration.textContent = formatDuration(currentTime);
           });
         } else {
-          audioElement.src = URL.createObjectURL(fileData.file); // Update the source with the correct URL
+          audioElement.src = URL.createObjectURL(fileData.file);
         }
-
-        console.log("File uploaded:", file.name);
       }
     });
   });
 
-  // Delete audio file and reset upload area
-  deleteButtonMp3.addEventListener("click", () => {
-    fileInput.value = ""; // Reset file input
-    mp3Input.style.display = "block"; // Reshow the upload area
-    mp3Input.style.top = "0px"; // Réinitialise la position verticale
-    mp3Input.style.bottom = "0px"; // Réinitialise la position horizontale
-    previewContainerMp3.style.border = "2px dashed gray"; // Restore the border
-    Mp3upload.style.display = "none";
-
-    // Reset duration span
-    durationSpan.textContent = "00:00";
-
-    // Stop and reset the audio element
-    if (audioElement) {
-      audioElement.pause();
-      audioElement.currentTime = 0;
-    }
-
-    console.log("Audio file deleted.");
-  });
-
-  // Play the audio when the play button is clicked
-  playButton.addEventListener("click", () => {
+  // Play/pause functionality
+  function togglePlay() {
     if (audioElement) {
       if (audioElement.paused) {
         audioElement.play();
-        playButton.src = "assets/Eo_circle_green_pause.svg"; // Update the play button to show pause icon
+        playButton.src = "assets/Eo_circle_green_pause.svg";
+        playIconModal17.src = "assets/Eo_circle_green_pause.svg";
       } else {
         audioElement.pause();
-        playButton.src = "assets/Group%201000002312.svg"; // Update the play button to show play icon
+        playButton.src = "assets/Group%201000002312.svg";
+        playIconModal17.src = "assets/Player%20Play.svg";
       }
     }
-  });
+  }
+
+  playButton.addEventListener("click", togglePlay);
+  playIconModal17.addEventListener("click", togglePlay);
 
   // Format duration to "MM:SS"
   function formatDuration(seconds) {
@@ -1119,6 +1101,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
   }
 });
+
+
 
 
 
