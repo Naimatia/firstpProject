@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("limitedButton");
   createButton.addEventListener("click", () => {
     const currentModal = bootstrap.Modal.getInstance(
-      document.getElementById("modal2")
+      document.getElementById("modal10")
     );
     currentModal.hide();
     const targetModalId = createButton.getAttribute("data-target");
@@ -145,6 +145,49 @@ document.addEventListener("DOMContentLoaded", () => {
     targetModal.show();
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("limitedButton");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal2")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("unlimitedButton2");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal10")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("limitedButton2");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal10")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("sosButton");
@@ -161,11 +204,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/**     Surveys  */
+
 document.addEventListener("DOMContentLoaded", () => {
-  const createButton = document.getElementById("backButtonToMainFrModel5");
+  const createButton = document.getElementById("backButtonToModal12");
   createButton.addEventListener("click", () => {
     const currentModal = bootstrap.Modal.getInstance(
-      document.getElementById("modal5")
+      document.getElementById("modal2")
     );
     currentModal.hide();
     const targetModalId = createButton.getAttribute("data-target");
@@ -175,6 +220,52 @@ document.addEventListener("DOMContentLoaded", () => {
     targetModal.show();
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("backButtonToModal11");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal10")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("backButtonToModal18");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal12")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const createButton = document.getElementById("GoButtonToModal18");
+  createButton.addEventListener("click", () => {
+    const currentModal = bootstrap.Modal.getInstance(
+      document.getElementById("modal11")
+    );
+    currentModal.hide();
+    const targetModalId = createButton.getAttribute("data-target");
+    const targetModal = new bootstrap.Modal(
+      document.querySelector(targetModalId)
+    );
+    targetModal.show();
+  });
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("backButtonToMainFrModel1");
@@ -191,11 +282,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
-  const createButton = document.getElementById("backButtonToMainFrModel15");
+  const createButton = document.getElementById("backButtonToMainFrModel11");
   createButton.addEventListener("click", () => {
     const currentModal = bootstrap.Modal.getInstance(
-      document.getElementById("modal15")
+      document.getElementById("modal2")
     );
     currentModal.hide();
     const targetModalId = createButton.getAttribute("data-target");
@@ -992,6 +1084,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Reshow the upload interface
     addImageButton.style.display = "block";
     fileInput.style.display = "block";
+    descriptionTextContainer.style.display = "flex"
     previewContainerWrapperModel6.style.border = "2px dashed gray"; // Restore the border
 
 
@@ -1132,15 +1225,491 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/**** Donation Mp3 */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mp3Input = document.getElementById("Mp3Input");
+  const fileInput = document.querySelector(".fileInput2");
+  const deleteButtonMp3 = document.getElementById("deleteButtonMp3");
+  const previewContainerMp3 = document.getElementById("previewContainerMp3");
+  const Mp3upload = document.getElementById("Mp3upload");
+  const playButton = document.getElementById("play");
+  const durationSpan = document.getElementById("Duration"); // For the original modal
+  const modal17Duration = document.getElementById("DurationModal7"); // Target duration in modal 17
+  const playIconModal17 = document.querySelector(".overlay img[src='assets/Player%20Play.svg']");
+  const MAX_DURATION = 300; // Maximum duration in seconds
+  const allowedTypes = ["audio/mpeg", "audio/wav"];
+  let audioElement = null; // Variable to store the audio element
+
+  // Validate file type and size
+  function validateFile(file, callback) {
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only MP3 or WAV files are allowed.");
+      return callback(false, null);
+    }
+
+    const audio = new Audio();
+    audio.src = URL.createObjectURL(file);
+
+    audio.addEventListener("loadedmetadata", () => {
+      if (audio.duration > MAX_DURATION) {
+        alert(`The file exceeds the maximum allowed duration of ${MAX_DURATION} seconds.`);
+        return callback(false, null);
+      }
+
+      callback(true, { file, duration: audio.duration });
+    });
+
+    audio.onerror = () => {
+      alert("Invalid audio file.");
+      callback(false, null);
+    };
+  }
+
+  // Handle file input change
+  fileInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+
+    if (files.length > 1) {
+      alert("You can only upload one file at a time.");
+      return;
+    }
+
+    const file = files[0];
+    validateFile(file, (isValid, fileData) => {
+      if (isValid) {
+        // Hide the upload area
+        mp3Input.style.display = "none";
+        previewContainerMp3.style.border = "none";
+        Mp3upload.style.display = "block";
+
+        // Update the duration spans
+        durationSpan.textContent = formatDuration(fileData.duration);
+        modal17Duration.textContent = formatDuration(fileData.duration);
+
+        // Create an audio element and append it
+        if (!audioElement) {
+          audioElement = new Audio(URL.createObjectURL(fileData.file));
+          audioElement.addEventListener("timeupdate", () => {
+            const currentTime = audioElement.currentTime;
+            durationSpan.textContent = formatDuration(currentTime);
+            modal17Duration.textContent = formatDuration(currentTime);
+          });
+        } else {
+          audioElement.src = URL.createObjectURL(fileData.file);
+        }
+      }
+    });
+  });
+
+  // Delete audio file and reset upload area
+  deleteButtonMp3.addEventListener("click", () => {
+    // Stop audio playback if it's playing
+    if (audioElement && !audioElement.paused) {
+      audioElement.pause();
+    }
+
+    // Reset the audio element and clear the file input
+    fileInput.value = ""; // Reset file input
+    mp3Input.style.display = "block"; // Reshow the upload area
+    mp3Input.style.top = "0px"; // Réinitialise la position verticale
+    mp3Input.style.bottom = "0px"; // Réinitialise la position horizontale
+    previewContainerMp3.style.border = "2px dashed gray"; // Restore the border
+    Mp3upload.style.display = "none";
+
+    // Reset duration span
+    durationSpan.textContent = "00:00";
+
+    // Reset audio element
+    audioElement = null;
+
+    // Reset play button and icon
+    playButton.src = "assets/Group%201000002312.svg";
+    playIconModal17.src = "assets/Player%20Play.svg";
+
+    console.log("Audio file deleted.");
+  });
+
+  // Play/pause functionality
+  function togglePlay() {
+    if (audioElement) {
+      if (audioElement.paused) {
+        audioElement.play();
+        playButton.src = "assets/Eo_circle_green_pause.svg";
+        playIconModal17.src = "assets/Eo_circle_green_pause.svg";
+      } else {
+        audioElement.pause();
+        playButton.src = "assets/Group%201000002312.svg";
+        playIconModal17.src = "assets/Player%20Play.svg";
+      }
+    }
+  }
+
+  playButton.addEventListener("click", togglePlay);
+  playIconModal17.addEventListener("click", togglePlay);
+
+  // Format duration to "MM:SS"
+  function formatDuration(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+  }
+});
+
+/*    Donation ***/
+
+document.addEventListener("DOMContentLoaded", () => {
+  const addImageButton = document.getElementById("addImageButtonModel2");
+  const previewContainerWrapper = document.getElementById("image-preview-containerModal2");
+  const previewContainerWrapperModel6 = document.getElementById("previewContainerWrapperModel2");
+  const descriptionTextContainer = document.getElementById("descriptionTextContainerModal2");
+  const fileInput = document.querySelector(".fileInput18");
+  const deleteButton = document.getElementById("deleteButtonModal2");
+  const MAX_IMAGES = 1;
+  let imageCount = 0;
+
+  
+
+  // Function to validate the file type and size
+  function validateFile(file, callback) {
+    const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only JPG, PNG, or MP4 files are allowed.");
+      return callback(false, null);
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+          const resizedDataUrl = canvas.toDataURL(file.type);
+          callback(true, resizedDataUrl);
+        } else {
+          callback(true, e.target.result);
+        }
+      };
+      img.src = e.target.result;
+    };
+
+    reader.onerror = () => {
+      callback(false, null);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  // Handle file input changes
+  fileInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+    if (imageCount + files.length <= MAX_IMAGES) {
+      Array.from(files).forEach((file) => {
+        validateFile(file, (isValid, fileData) => {
+          if (isValid) {
+            console.log("Valid image file loaded, appending it to the container.");
+
+            const previewImage = document.createElement("img");
+            previewImage.src = fileData;
+            previewImage.alt = "Image Preview";
+            previewImage.style.width = "100%";
+            previewImage.style.height = "100%";
+            previewImage.style.objectFit = "fill";
+            previewImage.style.borderRadius = "10px";
+
+            // Append the image to the preview container
+            previewContainerWrapper.appendChild(previewImage);
+
+            // Hide the upload interface
+            addImageButton.style.display = "none";
+            fileInput.style.display = "none";
+            descriptionTextContainer.style.display = "none"
+            previewContainerWrapperModel6.style.border = "none";
 
 
+            imageCount++;
+            console.log("Image successfully appended to the container.");
+          }
+        });
+      });
+    } else {
+      alert("You can only upload a maximum of 1 image.");
+    }
+  });
+
+  // Handle image deletion
+  deleteButton.addEventListener("click", () => {
+    console.log("Deleting the image...");
+
+    // Remove the preview image
+    while (previewContainerWrapper.firstChild) {
+      previewContainerWrapper.removeChild(previewContainerWrapper.firstChild);
+    }
+
+    // Reset image count
+    imageCount = 0;
+
+    // Reshow the upload interface
+    addImageButton.style.display = "block";
+    fileInput.style.display = "block";
+    descriptionTextContainer.style.display = "flex"
+    previewContainerWrapperModel6.style.border = "2px dashed gray"; // Restore the border
 
 
+    console.log("Image deleted and upload interface restored.");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mp3Input = document.getElementById("Mp3InputModal10");
+  const fileInput = document.querySelector(".fileInputModal7");
+  const deleteButtonMp3 = document.getElementById("deleteButtonMp3Modal10");
+  const previewContainerMp3 = document.getElementById("previewContainerMp3Modal10");
+  const Mp3upload = document.getElementById("Mp3uploadModal10");
+  const playButton = document.getElementById("play");
+  const durationSpan = document.getElementById("Duration"); // For the original modal
+  const modal17Duration = document.getElementById("DurationModal7"); // Target duration in modal 17
+  const playIconModal17 = document.querySelector(".overlay img[src='assets/Player%20Play.svg']");
+  const MAX_DURATION = 300; // Maximum duration in seconds
+  const allowedTypes = ["audio/mpeg", "audio/wav"];
+  let audioElement = null; // Variable to store the audio element
+
+  // Validate file type and size
+  function validateFile(file, callback) {
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only MP3 or WAV files are allowed.");
+      return callback(false, null);
+    }
+
+    const audio = new Audio();
+    audio.src = URL.createObjectURL(file);
+
+    audio.addEventListener("loadedmetadata", () => {
+      if (audio.duration > MAX_DURATION) {
+        alert(`The file exceeds the maximum allowed duration of ${MAX_DURATION} seconds.`);
+        return callback(false, null);
+      }
+
+      callback(true, { file, duration: audio.duration });
+    });
+
+    audio.onerror = () => {
+      alert("Invalid audio file.");
+      callback(false, null);
+    };
+  }
+
+  // Handle file input change
+  fileInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+
+    if (files.length > 1) {
+      alert("You can only upload one file at a time.");
+      return;
+    }
+
+    const file = files[0];
+    validateFile(file, (isValid, fileData) => {
+      if (isValid) {
+        // Hide the upload area
+        mp3Input.style.display = "none";
+        previewContainerMp3.style.border = "none";
+        Mp3upload.style.display = "block";
+
+        // Update the duration spans
+        durationSpan.textContent = formatDuration(fileData.duration);
+        modal17Duration.textContent = formatDuration(fileData.duration);
+
+        // Create an audio element and append it
+        if (!audioElement) {
+          audioElement = new Audio(URL.createObjectURL(fileData.file));
+          audioElement.addEventListener("timeupdate", () => {
+            const currentTime = audioElement.currentTime;
+            durationSpan.textContent = formatDuration(currentTime);
+            modal17Duration.textContent = formatDuration(currentTime);
+          });
+        } else {
+          audioElement.src = URL.createObjectURL(fileData.file);
+        }
+      }
+    });
+  });
+
+  // Delete audio file and reset upload area
+  deleteButtonMp3.addEventListener("click", () => {
+    // Stop audio playback if it's playing
+    if (audioElement && !audioElement.paused) {
+      audioElement.pause();
+    }
+
+    // Reset the audio element and clear the file input
+    fileInput.value = ""; // Reset file input
+    mp3Input.style.display = "block"; // Reshow the upload area
+    mp3Input.style.top = "0px"; // Réinitialise la position verticale
+    mp3Input.style.bottom = "0px"; // Réinitialise la position horizontale
+    previewContainerMp3.style.border = "2px dashed gray"; // Restore the border
+    Mp3upload.style.display = "none";
+
+    // Reset duration span
+    durationSpan.textContent = "00:00";
+
+    // Reset audio element
+    audioElement = null;
+
+    // Reset play button and icon
+    playButton.src = "assets/Group%201000002312.svg";
+    playIconModal17.src = "assets/Player%20Play.svg";
+
+    console.log("Audio file deleted.");
+  });
+
+  // Play/pause functionality
+  function togglePlay() {
+    if (audioElement) {
+      if (audioElement.paused) {
+        audioElement.play();
+        playButton.src = "assets/Eo_circle_green_pause.svg";
+        playIconModal17.src = "assets/Eo_circle_green_pause.svg";
+      } else {
+        audioElement.pause();
+        playButton.src = "assets/Group%201000002312.svg";
+        playIconModal17.src = "assets/Player%20Play.svg";
+      }
+    }
+  }
+
+  playButton.addEventListener("click", togglePlay);
+  playIconModal17.addEventListener("click", togglePlay);
+
+  // Format duration to "MM:SS"
+  function formatDuration(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+  }
+});
+/* Donation Modal 10*/
+document.addEventListener("DOMContentLoaded", () => {
+  const addImageButton = document.getElementById("addImageButtonModel10");
+  const previewContainerWrapper = document.getElementById("image-preview-containerModal10");
+  const previewContainerWrapperModel6 = document.getElementById("previewContainerWrapperModel10");
+  const descriptionTextContainer = document.getElementById("descriptionTextContainerModal10");
+  const fileInput = document.querySelector(".fileInput10");
+  const deleteButton = document.getElementById("deleteButtonModal10");
+  const MAX_IMAGES = 1;
+  let imageCount = 0;
+
+  
+
+  // Function to validate the file type and size
+  function validateFile(file, callback) {
+    const allowedTypes = ["image/jpeg", "image/png", "video/mp4"];
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only JPG, PNG, or MP4 files are allowed.");
+      return callback(false, null);
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        if (img.width > 350 || img.height > 812) {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          const ratio = Math.min(350 / img.width, 812 / img.height);
+          const newWidth = img.width * ratio;
+          const newHeight = img.height * ratio;
+
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+          const resizedDataUrl = canvas.toDataURL(file.type);
+          callback(true, resizedDataUrl);
+        } else {
+          callback(true, e.target.result);
+        }
+      };
+      img.src = e.target.result;
+    };
+
+    reader.onerror = () => {
+      callback(false, null);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  // Handle file input changes
+  fileInput.addEventListener("change", (event) => {
+    const files = event.target.files;
+    if (imageCount + files.length <= MAX_IMAGES) {
+      Array.from(files).forEach((file) => {
+        validateFile(file, (isValid, fileData) => {
+          if (isValid) {
+            console.log("Valid image file loaded, appending it to the container.");
+
+            const previewImage = document.createElement("img");
+            previewImage.src = fileData;
+            previewImage.alt = "Image Preview";
+            previewImage.style.width = "100%";
+            previewImage.style.height = "100%";
+            previewImage.style.objectFit = "fill";
+            previewImage.style.borderRadius = "10px";
+
+            // Append the image to the preview container
+            previewContainerWrapper.appendChild(previewImage);
+
+            // Hide the upload interface
+            addImageButton.style.display = "none";
+            fileInput.style.display = "none";
+            descriptionTextContainer.style.display = "none"
+            previewContainerWrapperModel6.style.border = "none";
 
 
+            imageCount++;
+            console.log("Image successfully appended to the container.");
+          }
+        });
+      });
+    } else {
+      alert("You can only upload a maximum of 1 image.");
+    }
+  });
+
+  // Handle image deletion
+  deleteButton.addEventListener("click", () => {
+    console.log("Deleting the image...");
+
+    // Remove the preview image
+    while (previewContainerWrapper.firstChild) {
+      previewContainerWrapper.removeChild(previewContainerWrapper.firstChild);
+    }
+
+    // Reset image count
+    imageCount = 0;
+
+    // Reshow the upload interface
+    addImageButton.style.display = "block";
+    fileInput.style.display = "block";
+    descriptionTextContainer.style.display = "flex"
+    previewContainerWrapperModel6.style.border = "2px dashed gray"; // Restore the border
 
 
-
+    console.log("Image deleted and upload interface restored.");
+  });
+});
 
 
 
@@ -1718,16 +2287,15 @@ function changeMainImage(src) {
 }
 
 
-
 /*
+
 window.onload = function () {
-  const modal = new bootstrap.Modal(document.getElementById('modal6'));
-  modal.show();
 
-
+  const modal2 = new bootstrap.Modal(document.getElementById('modal10'));
+  modal2.show();
 };
-
 */
+
 
 function updateLabelWithImage(event, containerId) {
   const fileInput = event.target;
