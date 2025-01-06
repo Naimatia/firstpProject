@@ -892,6 +892,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const addImageButton = document.getElementById("addImageButtonModel6");
   const previewContainerWrapper = document.getElementById("image-preview-container");
   const previewContainerWrapperModel6 = document.getElementById("previewContainerWrapperModel6");
+  const descriptionTextContainer = document.getElementById("descriptionTextContainer");
   const fileInput = document.querySelector(".fileInput6");
   const deleteButton = document.getElementById("deleteButton1");
   const MAX_IMAGES = 1;
@@ -962,6 +963,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Hide the upload interface
             addImageButton.style.display = "none";
             fileInput.style.display = "none";
+            descriptionTextContainer.style.display = "none"
             previewContainerWrapperModel6.style.border = "none";
 
 
@@ -1688,14 +1690,14 @@ function changeMainImage(src) {
 
 
 
-/*
+
 window.onload = function () {
   const modal = new bootstrap.Modal(document.getElementById('modal6'));
   modal.show();
 
 
 };
-*/
+
 
 
 function updateLabelWithImage(event, containerId) {
