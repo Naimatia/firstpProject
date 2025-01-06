@@ -210,7 +210,7 @@
             <!-- Image à gauche -->
             <div style="display: flex; align-items: center; justify-content: center;">
               <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
-                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;" />
+                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;margin-left: 10px;" />
               <input type="file" id="imageUploader2" accept="image/*" style="display: none;" />
             </div>
 
@@ -417,7 +417,7 @@
               gap: 10px; background-color: #fff; margin-top: 40px; border-radius: 10px; 
               margin: 7px; align-self: flex-end;">
                 <img src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration" class="img-fluid"
-                  data-target="#modal17" data-bs-dismiss="modal" style="height: 41px; width: 37px" />
+                  data-target="#modal17" data-bs-dismiss="modal" style="height: 41px; width: 37px;margin-left: 10px;" />
                 <div style="width: 275px; height: 65px; text-align: center;">
                   <h4 style="font-size: 26px; font-weight: 500; line-height: 15px;">Multi Selection</h4>
                   <h6 style="font-size: 22px; font-weight: 500; line-height: 15px; color: #64748B;">File Size H 812 - W
@@ -590,7 +590,7 @@
               margin: 7px; align-self: flex-end;">
            <img src="assets/first-svg-dialog/Group%201000008026.svg" 
                 alt="Illustration" class="img-fluid" data-target="#modal17" 
-                data-bs-dismiss="modal" style="height: 41px; width: 37px" />
+                data-bs-dismiss="modal" style="height: 41px; width: 37px;margin-left: 10px;" />
            <div style="width: 275px; height: 47px; text-align: center;">
              <h4 style="font-size: 26px; font-weight: 500; line-height: 20px;">Upload Audio</h4>
              <h6 style="font-size: 22px; font-weight: 500; line-height: 20px; color: #64748B;">Mp3 or Wav File</h6>
@@ -811,10 +811,10 @@
               <!-- Description Text (bottom-aligned) -->
               <div id="descriptionTextContainerModal10" style="width: 344px; height: 90px; display: flex; 
               align-items: center; justify-content: start; 
-              gap: 10px; background-color: #fff; margin-top: 40px; border-radius: 10px; 
+               background-color: #fff; margin-top: 40px; border-radius: 10px; 
               margin: 7px; align-self: flex-end;">
                 <img src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration" class="img-fluid"
-                  data-target="#modal17" data-bs-dismiss="modal" style="height: 41px; width: 37px" />
+                  data-target="#modal17" data-bs-dismiss="modal" style="height: 41px; width: 37px;margin-left: 10px;" />
                 <div style="width: 275px; height: 65px; text-align: center;">
                   <h4 style="font-size: 26px; font-weight: 500; line-height: 15px;">Multi Selection</h4>
                   <h6 style="font-size: 22px; font-weight: 500; line-height: 15px; color: #64748B;">File Size H 812 - W
@@ -866,29 +866,23 @@
                 background-color: #e0e0e0;
                 border-radius: 5px;
                 ">
-                    <input type="text" class="form-control" placeholder="Start Date" id="datepicker1"
+                    <input type="text" class="form-control" placeholder="Type the amount" id="datepicker1"
                       aria-label="Datepicker 1" style="width: 90px; height: 35px; background-color: #e0e0e0;" />
-                    <button class="btn " type="button" onclick="$('#datepicker1').datepicker('show')">
-                      <img src="/assets/Calendar%20Add.svg" style="width: 20px;
-                  height: 20px;
-                  display: flex;
-                  ">
-                    </button>
                   </div>
                 </div>
                 <div class="col-6" style="border-radius: 10px;">
-                  <div class="input-group" style="width: 150px; height: 35px; background-color: #e0e0e0; 
-                border-radius: 5px;">
-                    <input type="text" class="form-control" placeholder="Expired Date" id="datepicker2"
-                      aria-label="Datepicker 2" style="width: 90px; height: 35px; background-color: #e0e0e0" />
-                    <button class="btn" type="button" onclick="$('#datepicker2').datepicker('show')">
-                      <img src="/assets/Calendar%20Add.svg" style="width: 20px;
-                  height: 20px;
-                  display: flex;
-                  ">
-                    </button>
+                  <div class="input-group" style="width: 150px; height: 35px; background-color: #e0e0e0; border-radius: 5px;">
+                    <select class="form-select" id="datepicker2" aria-label="Datepicker Dropdown"
+                      style="width: 150px; height: 35px; background-color: #e0e0e0; border-radius: 5px;">
+                      <option selected disabled>Currency</option>
+                      <option value="3">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <!-- Ajoutez plus d'options ici -->
+                    </select>
                   </div>
                 </div>
+                
               </div>
 
 
@@ -987,7 +981,7 @@
               margin: 7px; align-self: flex-end;">
            <img src="assets/first-svg-dialog/Group%201000008026.svg" 
                 alt="Illustration" class="img-fluid" data-target="#modal17" 
-                data-bs-dismiss="modal" style="height: 41px; width: 37px" />
+                data-bs-dismiss="modal" style="height: 41px; width: 37px;margin-left: 10px;" />
            <div style="width: 275px; height: 47px; text-align: center;">
              <h4 style="font-size: 26px; font-weight: 500; line-height: 20px;">Upload Audio</h4>
              <h6 style="font-size: 22px; font-weight: 500; line-height: 20px; color: #64748B;">Mp3 or Wav File</h6>
@@ -2602,7 +2596,7 @@ text-decoration-skip-ink: none;
                     padding: 5px;
                   ">
                 <img src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration" class="img-fluid"
-                  data-target="#modal2" data-bs-dismiss="modal" style="height: 80px; width: 80px" />
+                  data-target="#modal2" data-bs-dismiss="modal" style="height: 80px; width: 80px;margin-left: 10px;" />
 
                 <div style="text-align: center">
                   <h4>Multi Selection</h4>
@@ -3500,7 +3494,7 @@ gap: 5px;">
             <!-- Image à gauche -->
             <div style="display: flex; align-items: center; justify-content: center;">
               <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
-                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;" />
+                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;margin-left: 10px;" />
               <input type="file" id="imageUploader2" accept="image/*" style="display: none;" />
             </div>
 
@@ -4309,7 +4303,7 @@ gap: 5px;">
                   padding: 5px;
                 ">
               <img src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration" class="img-fluid"
-                data-target="#modal2" data-bs-dismiss="modal" style="height: 80px; width: 80px" />
+                data-target="#modal2" data-bs-dismiss="modal" style="height: 80px; width: 80px;margin-left: 10px;" />
 
               <div style="text-align: center">
                 <h4>Multi Selection</h4>
@@ -5132,7 +5126,7 @@ text-decoration-skip-ink: none;
               gap: 10px; background-color: #fff; margin-top: 40px; border-radius: 10px; 
               margin: 7px; align-self: flex-end;">
                 <img src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration" class="img-fluid"
-                  data-target="#modal17" data-bs-dismiss="modal" style="height: 41px; width: 37px" />
+                  data-target="#modal17" data-bs-dismiss="modal" style="height: 41px; width: 37px;margin-left: 10px;" />
                 <div style="width: 275px; height: 65px; text-align: center;">
                   <h4 style="font-size: 26px; font-weight: 500; line-height: 15px;">Multi Selection</h4>
                   <h6 style="font-size: 22px; font-weight: 500; line-height: 15px; color: #64748B;">File Size H 812 - W
@@ -5309,7 +5303,7 @@ text-decoration-skip-ink: none;
               margin: 7px; align-self: flex-end;">
            <img src="assets/first-svg-dialog/Group%201000008026.svg" 
                 alt="Illustration" class="img-fluid" data-target="#modal17" 
-                data-bs-dismiss="modal" style="height: 41px; width: 37px" />
+                data-bs-dismiss="modal" style="height: 41px; width: 37px;margin-left: 10px;" />
            <div style="width: 275px; height: 47px; text-align: center;">
              <h4 style="font-size: 26px; font-weight: 500; line-height: 20px;">Upload Audio</h4>
              <h6 style="font-size: 22px; font-weight: 500; line-height: 20px; color: #64748B;">Mp3 or Wav File</h6>
