@@ -1078,6 +1078,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Delete audio file and reset upload area
+  deleteButtonMp3.addEventListener("click", () => {
+    // Stop audio playback if it's playing
+    if (audioElement && !audioElement.paused) {
+      audioElement.pause();
+    }
+
+    // Reset the audio element and clear the file input
+    fileInput.value = ""; // Reset file input
+    mp3Input.style.display = "block"; // Reshow the upload area
+    mp3Input.style.top = "0px"; // Réinitialise la position verticale
+    mp3Input.style.bottom = "0px"; // Réinitialise la position horizontale
+    previewContainerMp3.style.border = "2px dashed gray"; // Restore the border
+    Mp3upload.style.display = "none";
+
+    // Reset duration span
+    durationSpan.textContent = "00:00";
+
+    // Reset audio element
+    audioElement = null;
+
+    // Reset play button and icon
+    playButton.src = "assets/Group%201000002312.svg";
+    playIconModal17.src = "assets/Player%20Play.svg";
+
+    console.log("Audio file deleted.");
+  });
+
   // Play/pause functionality
   function togglePlay() {
     if (audioElement) {
@@ -1103,6 +1131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
   }
 });
+
 
 
 
