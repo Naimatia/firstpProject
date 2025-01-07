@@ -35,6 +35,66 @@ function toggleColor(buttonId) {
   clickedButton.querySelector('span').style.color = 'white';
 }
 
+function toggleColorModal9(buttonId) {
+  const buttons = document.querySelectorAll('.toggle-buttonModal9');
+  
+  // Reset all buttons to default state
+  buttons.forEach(button => {
+    button.style.background = '#F2F2F2';
+    button.querySelector('span').style.color = 'gray';
+  });
+  
+  // Toggle the clicked button
+  const clickedButton = document.getElementById(buttonId);
+  clickedButton.style.background = '#1CA2ED';
+  clickedButton.querySelector('span').style.color = 'white';
+}
+
+function toggleColorModal12(buttonId) {
+  const buttons = document.querySelectorAll('.toggle-buttonModal12');
+  
+  // Reset all buttons to default state
+  buttons.forEach(button => {
+    button.style.background = '#F2F2F2';
+    button.querySelector('span').style.color = 'gray';
+  });
+  
+  // Toggle the clicked button
+  const clickedButton = document.getElementById(buttonId);
+  clickedButton.style.background = '#1CA2ED';
+  clickedButton.querySelector('span').style.color = 'white';
+}
+function toggleColorModal11(buttonId) {
+  const buttons = document.querySelectorAll('.toggle-buttonModal11');
+  
+  // Reset all buttons to default state
+  buttons.forEach(button => {
+    button.style.background = '#F2F2F2';
+    button.querySelector('span').style.color = 'gray';
+  });
+  
+  // Toggle the clicked button
+  const clickedButton = document.getElementById(buttonId);
+  clickedButton.style.background = '#1CA2ED';
+  clickedButton.querySelector('span').style.color = 'white';
+}
+
+function toggleColorModal17(buttonId) {
+  const buttons = document.querySelectorAll('.toggle-buttonModal17');
+  
+  // Reset all buttons to default state
+  buttons.forEach(button => {
+    button.style.background = '#F2F2F2';
+    button.querySelector('span').style.color = 'gray';
+  });
+  
+  // Toggle the clicked button
+  const clickedButton = document.getElementById(buttonId);
+  clickedButton.style.background = '#1CA2ED';
+  clickedButton.querySelector('span').style.color = 'white';
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const createButton = document.getElementById("createButton");
   createButton.addEventListener("click", () => {
