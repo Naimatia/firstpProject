@@ -201,7 +201,7 @@
             display: flex;
             align-items: center;
             justify-content: center; /* Centrage horizontal */
-            gap: 10px; /* Réduit l'écart entre l'image et le texte */
+            gap: 50px; /* Réduit l'écart entre l'image et le texte */
             background-color: #fff;
             margin-top: 230px;
             border-radius: 10px;
@@ -210,7 +210,7 @@
             <!-- Image à gauche -->
             <div style="display: flex; align-items: center; justify-content: center;">
               <img id="displayImage2" src="assets/first-svg-dialog/Group%201000008026.svg" alt="Illustration"
-                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;margin-left: 10px;" />
+                class="img-fluid" style="height: 40px; width: 41px; cursor: pointer;margin-left: 2px;" />
               <input type="file" id="imageUploader2" accept="image/*" style="display: none;" />
             </div>
 
@@ -220,12 +220,12 @@
               flex-direction: column;
               align-items: center;
               justify-content: center; /* Centrage vertical */
-              gap: 6px;
+              gap: 2px;
               font-family: Genos;
             ">
               <h4 style="margin: 0; text-align: center;">Another Selection</h4>
               <h6 style="margin: 0; text-align: center;">File Size H 812 - W 350</h6>
-              <p style="margin: 0; text-align: center;">MP4-JPG Or PNG - Max 5 Image</p>
+              <p style="margin: 0; text-align: center;">MP4-JPG Or PNG - <span style="color: red;">Max 5 Image</span></p>
             </div>
           </div>
 
@@ -384,7 +384,7 @@
               <div style="width: 248px; height: 24px;font-size:  14px; 
               color: #ed1c24; font-weight: 400;
               line-height: 14px;">
-                This donation will automatically end on the specified date.
+This donation will automatically end on the specified date.
               </div>
             </div>
           </div>
@@ -768,7 +768,7 @@
               <div style="width: 248px; height: 24px;font-size:  14px; 
               color: #ed1c24; font-weight: 400;
               line-height: 14px;">
-                This donation will automatically end on the specified date.
+This donation will close automatically once the target amount is reached.
               </div>
             </div>
           </div>
@@ -2581,7 +2581,7 @@ text-decoration-skip-ink: none;
                 <div style="text-align: center">
                   <h4>Multi Selection</h4>
                   <h6>File Size H 812 - W 350</h6>
-                  <p>MP4-JPG Or PNG - Max 5 Image</p>
+                  <p>MP4-JPG Or PNG - <span style="color: red;">Max 5 Image</span></p>
                 </div>
               </div>
             </div>
@@ -3446,7 +3446,7 @@ gap: 5px;">
                       border-radius: 10px;
                     ">
                 <img src="assets/first-svg-dialog/Object.svg" alt="Illustration" data-target="#modal6"
-                  data-bs-dismiss="modal" style="height: 96px; width: 69%" id="addImageButton" />
+                  data-bs-dismiss="modal" style="height: 96px; width: 69%" id="addImageButtonModal4" />
 
                 <input type="file" class="fileInput4" multiple accept="image/*" style="
                         opacity: 0;
@@ -3465,7 +3465,7 @@ gap: 5px;">
               display: flex;
               align-items: center;
               justify-content: center; /* Centrage horizontal */
-              gap: 10px; /* Réduit l'écart entre l'image et le texte */
+              gap: 50px; /* Réduit l'écart entre l'image et le texte */
               background-color: #fff;
               margin-top: 230px;
               border-radius: 10px;
@@ -3484,12 +3484,12 @@ gap: 5px;">
                 flex-direction: column;
                 align-items: center;
                 justify-content: center; /* Centrage vertical */
-                gap: 6px;
+                gap: 3px;
                 font-family: Genos;
               ">
               <h4 style="margin: 0; text-align: center;">Another Selection</h4>
               <h6 style="margin: 0; text-align: center;">File Size H 812 - W 350</h6>
-              <p style="margin: 0; text-align: center;">MP4-JPG Or PNG - Max 1 Image</p>
+              <p style="margin: 0; text-align: center;">MP4-JPG Or PNG - <span style="color: red;">Max 1 Image</span></p>
             </div>
           </div>
           <div style="
@@ -3563,7 +3563,7 @@ gap: 5px;">
                 gap: 5px;
               ">
 
-          <img id="deleteButton" src="assets/second-svg-dialog/Group%201000008246.svg"
+          <img id="deleteButtonModal14" src="assets/second-svg-dialog/Group%201000008246.svg"
             style="width: 100%; height: 100%; cursor: pointer;" />
 
 
@@ -3580,7 +3580,7 @@ gap: 5px;">
 
         <div class="modal-body">
           <!-- الصورة الرئيسية -->
-          <img id="mainImage" src="assets/second-svg-dialog/image%201425.svg" class="img-fluid" style="
+          <img id="mainImageModal14" src="assets/second-svg-dialog/image%201425.svg" class="img-fluid" style="
                   position: absolute;
                   top: 0%;
                   left: 0%;
@@ -4288,7 +4288,7 @@ gap: 5px;">
               <div style="text-align: center">
                 <h4>Multi Selection</h4>
                 <h6>File Size H 812 - W 350</h6>
-                <p>MP4-JPG Or PNG - Max 5 Image</p>
+                <p>MP4-JPG Or PNG - <span style="color: red;">Max 5 Image</p>
               </div>
             </div>
           </div>
@@ -5160,9 +5160,9 @@ text-decoration-skip-ink: none;
                 background-color: #e0e0e0;
                 border-radius: 5px;
                 ">
-                    <input type="text" class="form-control" placeholder="Start Date" id="datepicker1"
+                    <input type="text" class="form-control" placeholder="Start Date" id="datepicker1Modal6"
                       aria-label="Datepicker 1" style="width: 90px; height: 35px; background-color: #e0e0e0;" />
-                    <button class="btn " type="button" onclick="$('#datepicker1').datepicker('show')">
+                    <button class="btn " type="button" onclick="$('#datepicker1Modal6').datepicker('show')">
                       <img src="/assets/Calendar%20Add.svg" style="width: 20px;
                   height: 20px;
                   display: flex;
@@ -5173,9 +5173,9 @@ text-decoration-skip-ink: none;
                 <div class="col-6" style="border-radius: 10px;">
                   <div class="input-group" style="width: 150px; height: 35px; background-color: #e0e0e0; 
                 border-radius: 5px;">
-                    <input type="text" class="form-control" placeholder="Expired Date" id="datepicker2"
+                    <input type="text" class="form-control" placeholder="Expired Date" id="datepicker2Modal6"
                       aria-label="Datepicker 2" style="width: 90px; height: 35px; background-color: #e0e0e0" />
-                    <button class="btn" type="button" onclick="$('#datepicker2').datepicker('show')">
+                    <button class="btn" type="button" onclick="$('#datepicker2Modal6').datepicker('show')">
                       <img src="/assets/Calendar%20Add.svg" style="width: 20px;
                   height: 20px;
                   display: flex;
@@ -6252,18 +6252,32 @@ text-decoration-skip-ink: none;
   <script src="script.js"></script>
   <script>
     $(document).ready(function () {
-      $('#datepicker1').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true,
-      });
+  $('#datepicker1').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayHighlight: true,
+  });
 
-      $('#datepicker2').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true,
-      });
-    });
+  $('#datepicker2').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayHighlight: true,
+  });
+});
+
+$(document).ready(function () {
+  $('#datepicker1Modal6').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayHighlight: true,
+  });
+
+  $('#datepicker2Modal6').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    todayHighlight: true,
+  });
+});
 
 
 

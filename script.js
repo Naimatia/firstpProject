@@ -874,14 +874,14 @@ document.addEventListener("DOMContentLoaded", () => {
 /*************greeeting  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const addImageButton = document.getElementById("addImageButton");
+  const addImageButton = document.getElementById("addImageButtonModal4");
   const previewContainerWrapper = document.getElementById("previewContainerWrapper");
   const modal4 = document.getElementById("modal4");
   const modal14 = document.getElementById("modal14");
-  const mainImage = document.getElementById("mainImage");
+  const mainImage = document.getElementById("mainImageModal14");
   const thumbnailContainer = document.getElementById("thumbnailContainer");
   const imageCounter = document.getElementById("imageCounter");
-  const deleteButton = document.getElementById("deleteButton");
+  const deleteButton = document.getElementById("deleteButtonModal14");
 
   const MAX_IMAGES = 1;
   const DEFAULT_IMAGE = "assets/second-svg-dialog/image%201425.svg"; // Default image when no images are available
