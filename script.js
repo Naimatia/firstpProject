@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function toggleColor(buttonId) {
-  const buttons = document.querySelectorAll('.toggle-button');
+  const buttons = document.querySelectorAll('.toggle-buttonModal8');
   
   // Reset all buttons to default state
   buttons.forEach(button => {
